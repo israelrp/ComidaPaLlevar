@@ -519,6 +519,7 @@
     <Content Include="Views\Usuarios\PartialLoginUsuario.cshtml" />
     <Content Include="Views\Menu\Index.cshtml" />
     <Content Include="Views\Orden\Index.cshtml" />
+    <Content Include="Views\Orden\Confirmado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

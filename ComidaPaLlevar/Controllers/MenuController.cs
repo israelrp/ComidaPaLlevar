@@ -19,9 +19,9 @@ namespace ComidaPaLlevar.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(int Id)
+        public RedirectResult Index(int MenuId)
         {
-            
+            return Redirect("~/Orden/Index?MenuId="+MenuId.ToString());
         }
 	}
 }
