@@ -42,6 +42,12 @@ namespace ComidaPaLlevar.Controllers
             return PartialView();
         }
 
+        public RedirectResult LogOut()
+        {
+            Session["UsuarioLogueado"] = null;
+            return Redirect("~/Home/");
+        }
+
         [HttpPost]
         public RedirectResult PartialLoginUsuario(LoginModel login)
         {
@@ -49,10 +55,12 @@ namespace ComidaPaLlevar.Controllers
             Usuarios usuario = boUsuario.Autenticar(login.Email, login.Password);
             if (usuario != null)
             {
+                Session["UsuarioLogueado"] = usuario;
                 return Redirect("~/Menu");
             }
             else
             {
+                Session["UsuarioLogueado"] = null;
                 return Redirect("~/Home/Index?Login=false");
             }
         }

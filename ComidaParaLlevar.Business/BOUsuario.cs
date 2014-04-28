@@ -22,6 +22,12 @@ namespace ComidaPaLlevar.Business
             return usuariosDaoImpl.Delete(usuario);
         }
 
+        public Usuarios SelectByKey(int UsuarioId)
+        {
+            UsuariosDaoImpl usuariosDaoImpl = new UsuariosDaoImpl();
+            return usuariosDaoImpl.SelectByKey(new Usuarios { Id = UsuarioId });
+        }
+
         public Usuarios Autenticar(string email, string password)
         {
             UsuariosDaoImpl usuariosDaoImpl = new UsuariosDaoImpl();

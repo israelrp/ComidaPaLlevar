@@ -13,7 +13,15 @@
     <div class="container body-content">
         <header class="page-header">
             <div style="float:right;">
-                @{ Html.RenderPartial("../Usuarios/PartialLoginUsuario", new ComidaPaLlevar.Models.LoginModel());  }
+                @if (Session["UsuarioLogueado"] == null)
+                {
+                    Html.RenderPartial("../Usuarios/PartialLoginUsuario", new ComidaPaLlevar.Models.LoginModel());
+                }
+                else
+                {
+                    ComidaPallevar.Domain.Usuarios usuario=(ComidaPallevar.Domain.Usuarios)Session["UsuarioLogueado"];
+                    <span>Hola @usuario.Nombre -- </span>@Html.ActionLink("Cerrar sesión","LogOut","Usuarios")
+                }
             </div>
             <h1 style="font-family: 'oswaldbold';">ComoEnCasa</h1>
             <div></div>
@@ -21,7 +29,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - ComoEnCasa</p>
+            <p>&copy; @DateTime.Now.Year - Desarrollado por Novatek</p>
         </footer>
     </div>
 

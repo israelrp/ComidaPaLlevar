@@ -1,4 +1,5 @@
 ﻿using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -23,8 +24,19 @@ namespace ComidaPaLlevar.Controllers
         public RedirectToRouteResult Index(Ordenes orden)
         {
             BOOrden boOrden = new BOOrden();
+            orden.FechaSolicitud = DateTime.Now;
+            Usuarios usuario=(Usuarios)Session["UsuarioLogueado"];
+            orden.UsuarioId = usuario.Id;
             orden=boOrden.NuevaOrden(orden);
-            return RedirectToAction("Confirmado");
+            return RedirectToAction("Confirmado",orden);
+        }
+
+        public ActionResult Confirmado(Ordenes orden) 
+        {
+            int numeroOrden = orden.UsuarioId + orden.MenuId + orden.FechaSolicitud.Day + orden.FechaSolicitud.Second;
+            Usuarios usuario = new BOUsuario().SelectByKey(orden.UsuarioId);
+            ViewBag.NumeroOrden = usuario.Nombre.Substring(0,3).ToUpper()+ numeroOrden.ToString(); 
+            return View();
         }
 	}
 }
