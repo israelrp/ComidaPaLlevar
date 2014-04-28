@@ -20,10 +20,11 @@ namespace ComidaPaLlevar.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(Ordenes orden)
+        public RedirectToRouteResult Index(Ordenes orden)
         {
-            
-            return View(orden);
+            BOOrden boOrden = new BOOrden();
+            orden=boOrden.NuevaOrden(orden);
+            return RedirectToAction("Confirmado");
         }
 	}
 }

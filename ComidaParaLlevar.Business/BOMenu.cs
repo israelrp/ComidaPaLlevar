@@ -16,6 +16,12 @@ namespace ComidaPaLlevar.Business
             return menuDaoImpl.SelectAll();
         }
 
+        public Menus SelectByKey(int Id)
+        {
+            MenusDaoImpl menuDaoImpl = new MenusDaoImpl();
+            return menuDaoImpl.SelectByKey(new Menus { Id=Id });
+        }
+
         public Menus InsertarMenu(Menus menu)
         {
             MenusDaoImpl menuDaoImpl = new MenusDaoImpl();

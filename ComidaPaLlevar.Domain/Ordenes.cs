@@ -31,5 +31,7 @@ namespace ComidaPallevar.Domain
 		public string Direccion { get; set; } //(varchar(200), null)
 		[Required]
 		public byte Estatus { get; set; } //(tinyint, not null)
+
+        public Menus Menu { get; set; }
 	}
 }
