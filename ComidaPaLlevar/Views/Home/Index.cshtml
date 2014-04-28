@@ -2,30 +2,77 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-</div>
+<style>
+    #img-header{
+        background-image: url('../../Images/header.png');
+        width: 1140px;
+        height: 287px;
+    }
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    .promo {
+        color: white;
+        margin-left: 20px;
+        top: 50px;
+        width: 460px;
+        text-align: left;
+        background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 100%); /* IE10+ */
+        background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+        font-weight:normal;
+    }
+
+    .form-register {
+        float: right;
+        background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 100%); /* IE10+ */
+        background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+        width: 400px;
+        height: 420px;
+        margin-right: 20px;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        border-radius: 30px;
+    }
+
+    .tabla-caracteristica {
+        float: left;
+        width: 379px;
+        height:400px;
+        text-align:center;
+    }
+</style>
+<div class="header-content">
+    <div id="img-header">
+        <br />
+        <div class="form-register">
+            @{ Html.RenderPartial("../Usuarios/PartialRegistroUsuario");  }
+        </div>
+        <br />
+        <br />
+        <h3 class="promo">¡Se de los primeros cinco clientes en pedir<br /> y por inaguración recibe gratis tú comida!</h3>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+</div>
+<div class="body-content">
+    
+    <h3>¡Registrate ahora para hacer tus pedidos en linea y recibe semanalmente nuestras grandes promociones! <span style="font-size:60px; float:right; margin-right:20px; top:-34px;" class="glyphicon glyphicon-arrow-right"></span></h3>
+    
+    <div style="margin-top:100px;">
+        <div class="tabla-caracteristica">
+            PASO 1
+        </div>
+        <div class="tabla-caracteristica">
+            PASO 2
+        </div>
+        <div class="tabla-caracteristica">
+            PASO 3
+        </div>
     </div>
 </div>
