@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+iosLaunchConfigurationAttributes/ATTR_MINIFY=true
+iosLaunchConfigurationAttributes/ATTR_PROJECT_NAME=ComoEnCasa
+iosLaunchConfigurationAttributes/appid=com.novatek.ComoEnCasa
+iosLaunchConfigurationAttributes/certificate=Israel Romero Ponce (SSEKYW2ND8)
+iosLaunchConfigurationAttributes/keychain=
+iosLaunchConfigurationAttributes/sdk_version=7.1
+iosLaunchConfigurationAttributes/uuid=23A98CA1-294C-45DC-8F16-856640C855C9
+provisioning_profiles/development/23A98CA1-294C-45DC-8F16-856640C855C9/appid=com.novatek.ComoEnCasa
+provisioning_profiles/development/23A98CA1-294C-45DC-8F16-856640C855C9/filepath=/Users/israelromeroponce/Downloads/ComoEnCasaProfile.mobileprovision
+provisioning_profiles/development/23A98CA1-294C-45DC-8F16-856640C855C9/name=ComoEnCasaProfile
+provisioning_profiles/development/23A98CA1-294C-45DC-8F16-856640C855C9/uuid=23A98CA1-294C-45DC-8F16-856640C855C9
