@@ -175,6 +175,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\OrdenController.cs" />
     <Compile Include="Controllers\ServiceMenuController.cs" />
     <Compile Include="Controllers\ServiceOrdenController.cs" />
     <Compile Include="Controllers\ServiceUsuarioController.cs" />
@@ -517,6 +518,7 @@
     <Content Include="Views\Usuarios\PartialRegistroUsuario.cshtml" />
     <Content Include="Views\Usuarios\PartialLoginUsuario.cshtml" />
     <Content Include="Views\Menu\Index.cshtml" />
+    <Content Include="Views\Orden\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

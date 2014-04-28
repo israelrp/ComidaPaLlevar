@@ -49,7 +49,7 @@ namespace ComidaPaLlevar.Controllers
             Usuarios usuario = boUsuario.Autenticar(login.Email, login.Password);
             if (usuario != null)
             {
-                return Redirect("~/Home/Menu");
+                return Redirect("~/Menu");
             }
             else
             {

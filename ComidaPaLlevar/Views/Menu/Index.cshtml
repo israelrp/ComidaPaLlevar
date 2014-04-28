@@ -1,8 +1,30 @@
-﻿
+﻿@model List<ComidaPallevar.Domain.Menus>
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Menú del día</h2>
 
+<ul class="list-group">
+    @foreach (var menu in Model)
+    {
+        <li class="list-group-item">
+            <div style="float:left;">
+                <img src="@menu.Imagen" alt="FotoMenu" style="width:200px; height:auto;"  />
+            </div>
+            <div>
+                <h3>@menu.Nombre</h3><br/>
+                <h4>@menu.Descripcion</h4><br/>
+                <b>@menu.Precio.ToString("c")</b>
+                @using (Html.BeginForm("Index","Menu", FormMethod.Post))
+                {
+                    <input type="hidden" name="Id" value="@menu.Id" />
+                    <button class="btn btn-default" style="text-align:right;" type="submit">
+                        <span class="glyphicon glyphicon-ok-sign"></span><span> Solicitar </span>
+                    </button>
+                }
+            </div>
+        </li>
+    }
+</ul>
 
