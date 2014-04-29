@@ -35,7 +35,7 @@
         background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 100%); /* W3C */
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
         width: 400px;
-        height: 420px;
+        height: 490px;
         margin-right: 20px;
         -webkit-border-radius: 30px;
         -moz-border-radius: 30px;
@@ -49,6 +49,36 @@
         text-align:center;
     }
 </style>
+
+<script type="text/javascript">
+    $(function () {
+        var login = GetURLParameter('Login');
+
+        if (login != null) {
+            if (login == 'false') {
+                alert("Tu usuario o password son incorrectos");
+            }
+        }
+            
+    });
+
+
+
+    function GetURLParameter(sParam)
+    {
+        var sPageURL = window.location.search.substring(1);
+        var sURLVariables = sPageURL.split('&');
+        for (var i = 0; i < sURLVariables.length; i++)
+        {
+            var sParameterName = sURLVariables[i].split('=');
+            if (sParameterName[0] == sParam)
+            {
+                return sParameterName[1];
+            }
+        }
+    }
+
+</script>
 <div class="header-content">
     <div id="img-header">
         <br />
