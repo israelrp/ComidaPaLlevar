@@ -2,6 +2,10 @@
     ViewBag.Title = "Home Page";
 }
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
 <style>
     #img-header{
         background-image: url('../../Images/header.png');
@@ -48,6 +52,11 @@
         height:400px;
         text-align:center;
     }
+
+    /**/
+    .txtPasos > div:hover {
+        color: #008000;
+    }
 </style>
 
 <script type="text/javascript">
@@ -57,19 +66,54 @@
         var mensaje = GetURLParameter('Mensaje');
         if (login != null) {
             if (login == 'false') {
-                alert("Tu usuario o password son incorrectos");
+                //alert("Tu usuario o password son incorrectos");
+                $("#dialog-usuarioPass").dialog({
+                    modal: true,
+                    buttons: {
+                        Ok: function () {
+                            $(this).dialog("close");
+                        }
+                    },
+                    hide: {
+                        effect: "explode",
+                        duration: 1000
+                    }
+                });
             }
         }
 
         if (registro != null) {
             if (registro == 'false') {
-                alert("Opsss, ha ocurrido un problema con tu registro.");
+                //alert("Opsss, ha ocurrido un problema con tu registro.");
+                $("#dialog-problemaReg").dialog({
+                    modal: true,
+                    buttons: {
+                        Ok: function () {
+                            $(this).dialog("close");
+                        }
+                    },
+                    hide: {
+                        effect: "explode",
+                        duration: 1000
+                    }
+                });
             }
             else {
-                alert("¡Gracias por registrarte! Ahora inicia sesión.");
+                //alert("¡Gracias por registrarte! Ahora inicia sesión.");
+                $("#dialog-Gracias").dialog({
+                    modal: true,
+                    buttons: {
+                        Ok: function () {
+                            $(this).dialog("close");
+                        }
+                    },
+                    hide: {
+                        effect: "explode",
+                        duration: 1000
+                    }
+                });
             }
-        }
-            
+        }//            
     });
 
 
@@ -87,8 +131,37 @@
             }
         }
     }
-
 </script>
+
+<!--
+    
+-->
+
+<div id="dialog-usuarioPass" title="¡Datos incorrectos!" style="display: none; ">
+    <p>
+        Tu usuario o password son incorrectos        
+    </p>
+    <p>
+        Vuelve a intentar.
+    </p>
+</div>
+<div id="dialog-problemaReg" title="¡Registro Incorrecto!" style="display: none; ">
+    <p>
+        ¡Opsss, ha ocurrido un problema con tu registro!
+    </p>
+    <p>
+        Vuelve a intentar.
+    </p>
+</div>
+<div id="dialog-Gracias" title="¡Bienvenido!" style="display: none; ">
+    <p>
+        ¡Gracias por registrarte! Ahora inicia sesión.
+    </p>
+    <p>
+        :)
+    </p>
+</div>
+
 <div class="header-content">
     <div id="img-header">
         <br />
@@ -106,7 +179,7 @@
     </div>
     
     
-    <div style="margin-top:190px;">
+    <div style="margin-top:190px;" class="txtPasos">
         <div class="tabla-caracteristica">
             <h2><b>REGÍSTRATE</b></h2><br/>
             <span class="glyphicon glyphicon-pencil" style="font-size:60px;"></span><br /><br />
