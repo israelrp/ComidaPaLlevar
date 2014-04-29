@@ -1,0 +1,82 @@
+@{
+	var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "GridViewOrdenes";
+        settings.CallbackRouteValues = new { Controller = "Orden", Action = "GridViewPartialOrdenes" };
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Orden", Action = "GridViewPartialOrdenesAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Orden", Action = "GridViewPartialOrdenesUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Orden", Action = "GridViewPartialOrdenesDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+		settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowNewButton = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+		settings.KeyFieldName = "UsuarioId";
+
+		settings.SettingsPager.Visible = true;
+		settings.Settings.ShowGroupPanel = true;
+		settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+        settings.Columns.Add(c =>
+        {
+            c.FieldName = "UsuarioId";
+            c.Caption = "Cliente";
+            c.ColumnType = MVCxGridViewColumnType.ComboBox;
+            c.ReadOnly = true;
+            c.EditFormSettings.Visible = DefaultBoolean.False;
+            var comboBoxProperties = c.PropertiesEdit as ComboBoxProperties;
+            comboBoxProperties.DataSource = new ComidaPaLlevar.Business.BOUsuario().RecuperarUsuarios();
+            comboBoxProperties.TextField = "Nombre";
+            comboBoxProperties.ValueField = "Id";
+
+
+        });
+
+        settings.Columns.Add(c =>
+        {
+            c.FieldName = "MenuId";
+            c.Caption = "Menu";
+            c.ColumnType = MVCxGridViewColumnType.ComboBox;
+            c.ReadOnly = true;
+            c.EditFormSettings.Visible = DefaultBoolean.False;
+            var comboBoxProperties = c.PropertiesEdit as ComboBoxProperties;
+            comboBoxProperties.DataSource = new ComidaPaLlevar.Business.BOMenu().RecuperarMenus();
+            comboBoxProperties.TextField = "Nombre";
+            comboBoxProperties.ValueField = "Id";
+
+
+        });
+        settings.Columns.Add(c =>
+        {
+            c.FieldName = "FechaSolicitud";
+            c.ColumnType = MVCxGridViewColumnType.DateEdit;
+        });
+				settings.Columns.Add("Comentarios");
+				settings.Columns.Add("Latitud");
+				settings.Columns.Add("Longitud");
+				settings.Columns.Add("Direccion");
+                settings.Columns.Add("Estatus");
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "Estatus";
+                    c.ColumnType = MVCxGridViewColumnType.ComboBox;
+                    c.ReadOnly = true;
+                    c.EditFormSettings.Visible = DefaultBoolean.False;
+                    var comboBoxProperties = c.PropertiesEdit as ComboBoxProperties;
+                    comboBoxProperties.DataSource = new ComidaPaLlevar.Business.BOOrden().RecuperarOrdenes();
+                    comboBoxProperties.TextField = "Nombre";
+                    comboBoxProperties.ValueField = "Codigo";
+
+
+                });
+           
+			});
+		if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

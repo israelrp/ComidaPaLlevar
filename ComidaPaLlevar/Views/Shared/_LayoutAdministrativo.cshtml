@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComoEnCasa</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+
+
+    <link href="~/fonts/oswald-bold/stylesheet.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container body-content">
+        <header class="page-header">
+            <div style="float:right;">
+                @if (Session["UsuarioLogueado"] == null)
+                {
+                    Html.RenderPartial("../Usuarios/PartialLoginUsuario", new ComidaPaLlevar.Models.LoginModel());
+                }
+                else
+                {
+                    ComidaPallevar.Domain.Usuarios usuario = (ComidaPallevar.Domain.Usuarios)Session["UsuarioLogueado"];
+                    <span>Hola @usuario.Nombre -- </span>@Html.ActionLink("Cerrar sesión", "LogOut", "Usuarios")
+                }
+            </div>
+            @*<h1 style="font-family: 'oswaldbold';">ComoEnCasa</h1>*@
+            <div></div>
+        </header>
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Desarrollado por Novatek</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

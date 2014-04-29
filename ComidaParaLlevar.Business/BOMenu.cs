@@ -27,5 +27,17 @@ namespace ComidaPaLlevar.Business
             MenusDaoImpl menuDaoImpl = new MenusDaoImpl();
             return menuDaoImpl.Insert(menu);
         }
+
+        public Menus ActualizarMenu(Menus menu)
+        {
+            MenusDaoImpl menuDaoImpl = new MenusDaoImpl();
+            return menuDaoImpl.Update(menu);
+        }
+
+        public bool EliminarMenu(int Id)
+        {
+            MenusDaoImpl menuDaoImpl = new MenusDaoImpl();
+            return menuDaoImpl.Delete(new Menus { Id = Id });
+        }
     }
 }

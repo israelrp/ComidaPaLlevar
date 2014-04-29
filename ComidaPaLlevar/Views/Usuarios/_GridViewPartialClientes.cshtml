@@ -1,0 +1,33 @@
+@{
+	var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "GridViewClientes";
+        settings.CallbackRouteValues = new { Controller = "Usuarios", Action = "GridViewPartialClientes" };
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Usuarios", Action = "GridViewPartialClientesAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Usuarios", Action = "GridViewPartialClientesUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Usuarios", Action = "GridViewPartialClientesDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+		settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowNewButton = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+		settings.KeyFieldName = "Id";
+
+		settings.SettingsPager.Visible = true;
+		settings.Settings.ShowGroupPanel = true;
+		settings.Settings.ShowFilterRow = true;
+		settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+				settings.Columns.Add("Nombre");
+				settings.Columns.Add("Email");
+				settings.Columns.Add("Telefono");
+				settings.Columns.Add("Password");
+			});
+		if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

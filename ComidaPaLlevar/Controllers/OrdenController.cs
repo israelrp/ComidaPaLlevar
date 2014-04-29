@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using ComidaPaLlevar.Business;
 using ComidaPallevar.Domain;
+using DevExpress.Web.Mvc;
 
 namespace ComidaPaLlevar.Controllers
 {
@@ -38,5 +39,70 @@ namespace ComidaPaLlevar.Controllers
             ViewBag.NumeroOrden = usuario.Nombre.Substring(0,3).ToUpper()+ numeroOrden.ToString(); 
             return View();
         }
+
+        [ValidateInput(false)]
+        public ActionResult GridViewPartialOrdenes()
+        {
+            var model = new BOOrden().RecuperarOrdenes();
+            return PartialView("_GridViewPartialOrdenes", model);
+        }
+
+        [HttpPost, ValidateInput(false)]
+        public ActionResult GridViewPartialOrdenesAddNew([ModelBinder(typeof(DevExpressEditorsBinder))] ComidaPallevar.Domain.Ordenes item)
+        {
+            var model = new object[0];
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    // Insert here a code to insert the new item in your model
+                }
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
+            }
+            else
+                ViewData["EditError"] = "Please, correct all errors.";
+            return PartialView("_GridViewPartialOrdenes", model);
+        }
+        [HttpPost, ValidateInput(false)]
+        public ActionResult GridViewPartialOrdenesUpdate([ModelBinder(typeof(DevExpressEditorsBinder))] ComidaPallevar.Domain.Ordenes item)
+        {
+            var model = new object[0];
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    // Insert here a code to update the item in your model
+                }
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
+            }
+            else
+                ViewData["EditError"] = "Please, correct all errors.";
+            return PartialView("_GridViewPartialOrdenes", model);
+        }
+        [HttpPost, ValidateInput(false)]
+        public ActionResult GridViewPartialOrdenesDelete(System.Int32 UsuarioId)
+        {
+            var model = new object[0];
+            if (UsuarioId >= 0)
+            {
+                try
+                {
+                    // Insert here a code to delete the item from your model
+                }
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
+            }
+            return PartialView("_GridViewPartialOrdenes", model);
+        }
+
+       
 	}
 }
