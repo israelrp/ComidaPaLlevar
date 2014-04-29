@@ -15,6 +15,8 @@ namespace ComidaPaLlevar.Controllers
         // GET: /Menu/
         public ActionResult Index()
         {
+            if (Session["UsuarioLogueado"] == null)
+                return Redirect("~/Home/Index");
             List<Menus> menus = new BOMenu().RecuperarMenus();
             return View(menus);
         }
@@ -22,6 +24,8 @@ namespace ComidaPaLlevar.Controllers
         [HttpPost]
         public RedirectResult Index(int MenuId)
         {
+            if (Session["UsuarioLogueado"] == null)
+                return Redirect("~/Home/Index");
             return Redirect("~/Orden/Index?MenuId="+MenuId.ToString());
         }
 

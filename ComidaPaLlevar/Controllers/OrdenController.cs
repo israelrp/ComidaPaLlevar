@@ -16,6 +16,8 @@ namespace ComidaPaLlevar.Controllers
         // GET: /Orden/
         public ActionResult Index(int MenuId)
         {
+            if (Session["UsuarioLogueado"] == null)
+                return Redirect("~/Home/Index");
             Ordenes orden = new Ordenes();
             orden.Menu = new BOMenu().SelectByKey(MenuId);
             return View(orden);
@@ -24,6 +26,8 @@ namespace ComidaPaLlevar.Controllers
         [HttpPost]
         public RedirectToRouteResult Index(Ordenes orden)
         {
+            if (Session["UsuarioLogueado"] == null)
+                return RedirectToAction("Index","Home");
             BOOrden boOrden = new BOOrden();
             orden.FechaSolicitud = DateTime.Now;
             Usuarios usuario=(Usuarios)Session["UsuarioLogueado"];

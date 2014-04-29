@@ -53,10 +53,20 @@
 <script type="text/javascript">
     $(function () {
         var login = GetURLParameter('Login');
-
+        var registro = GetURLParameter('Registro');
+        var mensaje = GetURLParameter('Mensaje');
         if (login != null) {
             if (login == 'false') {
                 alert("Tu usuario o password son incorrectos");
+            }
+        }
+
+        if (registro != null) {
+            if (registro == 'false') {
+                alert("Opsss, ha ocurrido un problema con tu registro.");
+            }
+            else {
+                alert("¡Gracias por registrarte! Ahora inicia sesión.");
             }
         }
             
@@ -87,22 +97,36 @@
         </div>
         <br />
         <br />
-        <h3 class="promo">¡Se de los primeros cinco clientes en pedir<br /> y por inaguración recibe gratis tú comida!</h3>
+        <h3 class="promo">¡Hoy gran inaguración, pide tu comida en linea!</h3>
     </div>
 </div>
 <div class="body-content">
+    <div style="margin-top:60px;">
+        <h3>¡Regístrate ahora para hacer tus pedidos en linea y recibe semanalmente nuestras grandes promociones! <span style="font-size:60px; float:right; margin-right:20px; top:-34px;" class="glyphicon glyphicon-arrow-right"></span></h3>
+    </div>
     
-    <h3>¡Registrate ahora para hacer tus pedidos en linea y recibe semanalmente nuestras grandes promociones! <span style="font-size:60px; float:right; margin-right:20px; top:-34px;" class="glyphicon glyphicon-arrow-right"></span></h3>
     
-    <div style="margin-top:100px;">
+    <div style="margin-top:190px;">
         <div class="tabla-caracteristica">
-            PASO 1
+            <h2><b>REGÍSTRATE</b></h2><br/>
+            <span class="glyphicon glyphicon-pencil" style="font-size:60px;"></span><br /><br />
+            <p style="font-style:italic; font-weight:800;">
+                Se parte de nuestros clientes y obtén grandes beneficios.
+            </p>
         </div>
         <div class="tabla-caracteristica">
-            PASO 2
+            <h2><b>MENÚ</b></h2><br />
+            <span class="glyphicon glyphicon-list-alt" style="font-size:60px;"></span><br /><br />
+            <p style="font-style:italic; font-weight:800;">
+                Consulta y selecciona tu menú que mas te agrade.
+            </p>
         </div>
         <div class="tabla-caracteristica">
-            PASO 3
+            <h2><b>CONFIRMA</b></h2><br />
+            <span class="glyphicon glyphicon-ok-sign" style=" font-size:60px;"></span><br /><br />
+            <p style="font-style:italic; font-weight:800;">
+                ¡Confirma tu pedido y buen provecho!
+            </p>
         </div>
     </div>
 </div>

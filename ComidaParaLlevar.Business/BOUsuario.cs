@@ -13,7 +13,11 @@ namespace ComidaPaLlevar.Business
         public Usuarios NuevoUsuario(Usuarios usuario)
         {
             UsuariosDaoImpl usuariosDaoImpl = new UsuariosDaoImpl();
-            return usuariosDaoImpl.Insert(usuario);
+            Usuarios usuarioExiste = usuariosDaoImpl.SelectAll().Where(x => x.Email == usuario.Email).FirstOrDefault();
+            if (usuarioExiste == null)
+                return usuariosDaoImpl.Insert(usuario);
+            else
+                return null;
         }
 
         public Usuarios ActualizarUsuario(Usuarios usuario)

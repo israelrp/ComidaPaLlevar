@@ -18,7 +18,7 @@
             font-size: 10px;
         }
 </style>
-<h3 class="titulo-form">Registrate aquí</h3>
+<h3 class="titulo-form">Regístrate aquí</h3>
 @using (Html.BeginForm("PartialRegistroUsuario", "Usuarios", FormMethod.Post, new { @id="form-registro", @class="form-horizontal" }))
 {   
     <span>Nombre: </span>@Html.TextBoxFor(m => m.Nombre, new { @placeholder = "Nombre completo", @class = "form-control" })
