@@ -11,6 +11,14 @@ namespace ComidaPaLlevar.Business
 {
     public class BOOrden
     {
+        public Ordenes BuscarOrdenDelDia(int UsuarioId)
+        {
+            Ordenes ordenesUsuario=new Ordenes();
+            OrdenesDaoImpl ordenesDaoImpl = new OrdenesDaoImpl();
+            ordenesUsuario = ordenesDaoImpl.SelectAll().Where(x => x.UsuarioId == UsuarioId && x.FechaSolicitud.Day==DateTime.Now.Day && x.FechaSolicitud.Month==DateTime.Now.Month).FirstOrDefault();
+            return ordenesUsuario;
+        }
+
         public Ordenes NuevaOrden(Ordenes orden)
         {
             OrdenesDaoImpl ordenesDaoImpl = new OrdenesDaoImpl();

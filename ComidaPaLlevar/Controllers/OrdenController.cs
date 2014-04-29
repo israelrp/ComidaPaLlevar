@@ -44,6 +44,17 @@ namespace ComidaPaLlevar.Controllers
             return View();
         }
 
+        public ActionResult Estatus()
+        {
+            if (Session["UsuarioLogueado"] == null)
+                return RedirectToAction("Index", "Home");
+            Usuarios usuario = (Usuarios)Session["UsuarioLogueado"];
+            Ordenes orden = new BOOrden().BuscarOrdenDelDia(usuario.Id);
+            int numeroOrden = orden.UsuarioId + orden.MenuId + orden.FechaSolicitud.Day + orden.FechaSolicitud.Second;
+            ViewBag.NumeroOrden = usuario.Nombre.Substring(0, 3).ToUpper() + numeroOrden.ToString(); 
+            return View();
+        }
+
         [ValidateInput(false)]
         public ActionResult GridViewPartialOrdenes()
         {

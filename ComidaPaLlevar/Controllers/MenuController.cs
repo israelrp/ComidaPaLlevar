@@ -17,6 +17,13 @@ namespace ComidaPaLlevar.Controllers
         {
             if (Session["UsuarioLogueado"] == null)
                 return Redirect("~/Home/Index");
+            Usuarios usuario = (Usuarios)Session["UsuarioLogueado"];
+            BOOrden boOrden = new BOOrden();
+            Ordenes orden = boOrden.BuscarOrdenDelDia(usuario.Id);
+            if (orden != null)
+            {
+                return Redirect("~/Orden/Estatus");
+            }
             List<Menus> menus = new BOMenu().RecuperarMenus();
             return View(menus);
         }

@@ -24,19 +24,17 @@
     </span>
     <br/>
     <div style="text-align:center;">
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Index","Orden",FormMethod.Post))
         {
             <label>Comentarios:</label><br />
             @Html.TextAreaFor(m => m.Comentarios, new { @class = "text-area" })<br />
             <label>Dirección:</label><br />
             @Html.TextAreaFor(m => m.Direccion, new { @class = "text-area" })<br />
-            @Html.HiddenFor(m => m.Estatus)
-            @Html.HiddenFor(m => m.FechaSolicitud)
             @Html.HiddenFor(m => m.MenuId)
             @Html.HiddenFor(m => m.UsuarioId)<br />
-            <button class="btn btn-default" style="text-align:right;" type="submit">
-                <span class="glyphicon glyphicon-ok-sign"></span><span> Confirmar pedido</span>
-            </button>
+    <button class="btn btn-default" type="submit">
+        <span class="glyphicon glyphicon-ok-sign"></span><span> Confirmar pedido</span>
+    </button>
         }
     </div>
 </div>
