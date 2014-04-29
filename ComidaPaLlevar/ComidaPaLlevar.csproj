@@ -197,7 +197,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AdministracionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\OrdenController.cs" />
@@ -553,7 +552,6 @@
     <Content Include="Views\Orden\Confirmado.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Administracion\Menus.cshtml" />
-    <Content Include="Views\Menu\_GridViewPartialMenus.cshtml" />
     <Content Include="Views\Shared\_LayoutAdministrativo.cshtml" />
     <Content Include="Views\Administracion\Clientes.cshtml" />
     <Content Include="Views\Usuarios\_GridViewPartialClientes.cshtml" />
