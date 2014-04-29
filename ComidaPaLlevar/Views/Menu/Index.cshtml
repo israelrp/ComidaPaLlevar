@@ -3,19 +3,89 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Menú del día</h2>
+<style>
+    .itemPlatillo {
+        margin-top:10px;
+    }
+
+        .itemPlatillo:nth-child(even) {
+            background-color: #FFE4E1;
+        }
+
+        .itemPlatillo:nth-child(odd) {
+            background-color: #F0F8FF;
+        }
+        
+    .imgPlatillo {
+        border-radius: 5px;
+    }
+    .contentImage, .contentDatos
+    {
+      display:inline-block;
+      vertical-align:top;
+    }
+    .contentImage {
+        margin-right:20px;
+    }
+    .contentDatos {        
+    }
+
+    .btn {
+        background-color: #228B22;
+        color: #FFF;
+        font-weight: bold;
+    }
+        .btn:hover {
+            background-color: #FFF;
+            color: #228B22;
+            font-weight:bold;
+        }
+
+    .contentDatos p label {
+        font-weight: lighter;
+        font-size: 12px;
+        text-transform: none;
+    }
+    .contentDatos p span {
+        color: #708090;
+        text-transform: capitalize;
+        font-weight: bolder;
+    }
+
+    .nombrePlatillo label,
+    .precioPlatillo label {
+        font-size: 16px !important;
+        font-style: italic;
+    }
+
+
+</style>
+
+<h2 style="color: #696969; text-transform:capitalize; font-variant:small-caps; font-style:italic;">Menú del día</h2>
 
 <ul class="list-group">
     @foreach (var menu in Model)
     {
-        <li class="list-group-item">
-            <div style="float:left;">
-                <img src="@menu.Imagen" alt="FotoMenu" style="width:200px; height:auto;"  />
+        <li class="list-group-item itemPlatillo">
+            <div class="contentImage">
+                <img src="@menu.Imagen" alt="FotoMenu" style="width:200px; height:auto; " class="imgPlatillo"  />
             </div>
-            <div>
-                <h3>@menu.Nombre</h3><br/>
-                <h4>@menu.Descripcion</h4><br/>
-                <b>@menu.Precio.ToString("c")</b>
+            <div class="contentDatos">
+                <p class="nombrePlatillo">
+                    <span>Plato fuerte:</span>
+                    <label>@menu.Nombre</label>
+                </p>
+                
+                <p class="descripcionPlatillo">
+                    <span>Descripción del platillo:</span>
+                    <label>@menu.Descripcion</label>
+                </p>
+                
+                <p class="precioPlatillo">
+                    <span>Precio:</span>
+                    <label>@menu.Precio.ToString("c")</label>
+                </p>
+                
                 @using (Html.BeginForm("Index","Menu", FormMethod.Post))
                 {
                     <input type="hidden" name="MenuId" value="@menu.Id" />
