@@ -2,6 +2,10 @@
     ViewBag.Title = "Home Page";
 }
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
 <style>
     #img-header{
         background-image: url('../../Images/header.png');
@@ -35,7 +39,7 @@
         background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 100%); /* W3C */
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
         width: 400px;
-        height: 420px;
+        height: 490px;
         margin-right: 20px;
         -webkit-border-radius: 30px;
         -moz-border-radius: 30px;
@@ -48,7 +52,116 @@
         height:400px;
         text-align:center;
     }
+
+    /**/
+    .txtPasos > div:hover {
+        color: #008000;
+    }
 </style>
+
+<script type="text/javascript">
+    $(function () {
+        var login = GetURLParameter('Login');
+        var registro = GetURLParameter('Registro');
+        var mensaje = GetURLParameter('Mensaje');
+        if (login != null) {
+            if (login == 'false') {
+                //alert("Tu usuario o password son incorrectos");
+                $("#dialog-usuarioPass").dialog({
+                    modal: true,
+                    buttons: {
+                        Ok: function () {
+                            $(this).dialog("close");
+                        }
+                    },
+                    hide: {
+                        effect: "explode",
+                        duration: 1000
+                    }
+                });
+            }
+        }
+
+        if (registro != null) {
+            if (registro == 'false') {
+                //alert("Opsss, ha ocurrido un problema con tu registro.");
+                $("#dialog-problemaReg").dialog({
+                    modal: true,
+                    buttons: {
+                        Ok: function () {
+                            $(this).dialog("close");
+                        }
+                    },
+                    hide: {
+                        effect: "explode",
+                        duration: 1000
+                    }
+                });
+            }
+            else {
+                //alert("¡Gracias por registrarte! Ahora inicia sesión.");
+                $("#dialog-Gracias").dialog({
+                    modal: true,
+                    buttons: {
+                        Ok: function () {
+                            $(this).dialog("close");
+                        }
+                    },
+                    hide: {
+                        effect: "explode",
+                        duration: 1000
+                    }
+                });
+            }
+        }//            
+    });
+
+
+
+    function GetURLParameter(sParam)
+    {
+        var sPageURL = window.location.search.substring(1);
+        var sURLVariables = sPageURL.split('&');
+        for (var i = 0; i < sURLVariables.length; i++)
+        {
+            var sParameterName = sURLVariables[i].split('=');
+            if (sParameterName[0] == sParam)
+            {
+                return sParameterName[1];
+            }
+        }
+    }
+</script>
+
+<!--
+    
+-->
+
+<div id="dialog-usuarioPass" title="¡Datos incorrectos!" style="display: none; ">
+    <p>
+        Tu usuario o password son incorrectos        
+    </p>
+    <p>
+        Vuelve a intentar.
+    </p>
+</div>
+<div id="dialog-problemaReg" title="¡Registro Incorrecto!" style="display: none; ">
+    <p>
+        ¡Opsss, ha ocurrido un problema con tu registro!
+    </p>
+    <p>
+        Vuelve a intentar.
+    </p>
+</div>
+<div id="dialog-Gracias" title="¡Bienvenido!" style="display: none; ">
+    <p>
+        ¡Gracias por registrarte! Ahora inicia sesión.
+    </p>
+    <p>
+        :)
+    </p>
+</div>
+
 <div class="header-content">
     <div id="img-header">
         <br />
@@ -57,22 +170,36 @@
         </div>
         <br />
         <br />
-        <h3 class="promo">¡Se de los primeros cinco clientes en pedir<br /> y por inaguración recibe gratis tú comida!</h3>
+        <h3 class="promo">¡Hoy gran inaguración, pide tu comida en linea!</h3>
     </div>
 </div>
 <div class="body-content">
+    <div style="margin-top:60px;">
+        <h3>¡Regístrate ahora para hacer tus pedidos en linea y recibe semanalmente nuestras grandes promociones! <span style="font-size:60px; float:right; margin-right:20px; top:-34px;" class="glyphicon glyphicon-arrow-right"></span></h3>
+    </div>
     
-    <h3>¡Registrate ahora para hacer tus pedidos en linea y recibe semanalmente nuestras grandes promociones! <span style="font-size:60px; float:right; margin-right:20px; top:-34px;" class="glyphicon glyphicon-arrow-right"></span></h3>
     
-    <div style="margin-top:100px;">
+    <div style="margin-top:190px;" class="txtPasos">
         <div class="tabla-caracteristica">
-            PASO 1
+            <h2><b>REGÍSTRATE</b></h2><br/>
+            <span class="glyphicon glyphicon-pencil" style="font-size:60px;"></span><br /><br />
+            <p style="font-style:italic; font-weight:800;">
+                Se parte de nuestros clientes y obtén grandes beneficios.
+            </p>
         </div>
         <div class="tabla-caracteristica">
-            PASO 2
+            <h2><b>MENÚ</b></h2><br />
+            <span class="glyphicon glyphicon-list-alt" style="font-size:60px;"></span><br /><br />
+            <p style="font-style:italic; font-weight:800;">
+                Consulta y selecciona tu menú que mas te agrade.
+            </p>
         </div>
         <div class="tabla-caracteristica">
-            PASO 3
+            <h2><b>CONFIRMA</b></h2><br />
+            <span class="glyphicon glyphicon-ok-sign" style=" font-size:60px;"></span><br /><br />
+            <p style="font-style:italic; font-weight:800;">
+                ¡Confirma tu pedido y buen provecho!
+            </p>
         </div>
     </div>
 </div>

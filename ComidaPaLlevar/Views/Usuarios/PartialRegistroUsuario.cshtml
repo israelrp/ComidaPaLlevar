@@ -12,19 +12,24 @@
         padding-right: 15px;
         font-weight: bold;
     }
+
+        #form-registro .field-validation-error {
+            color: yellow;
+            font-size: 10px;
+        }
 </style>
-<h3 class="titulo-form">Registrate aquí</h3>
+<h3 class="titulo-form">Regístrate aquí</h3>
 @using (Html.BeginForm("PartialRegistroUsuario", "Usuarios", FormMethod.Post, new { @id="form-registro", @class="form-horizontal" }))
 {   
     <span>Nombre: </span>@Html.TextBoxFor(m => m.Nombre, new { @placeholder = "Nombre completo", @class = "form-control" })
-    @Html.ValidationMessageFor(m => m.Nombre)
+    @Html.ValidationMessageFor(m => m.Nombre)<br/>
     <span>Email: </span>@Html.TextBoxFor(m => m.Email, new { @placeholder = "Email", @class = "form-control" })
-    @Html.ValidationMessageFor(m => m.Email)
+    @Html.ValidationMessageFor(m => m.Email)<br/>
     <span>Telefono para verificar su pedido: </span>@Html.TextBoxFor(m => m.Telefono, new { @placeholder = "Telefono para verificar", @class = "form-control" })
-    @Html.ValidationMessageFor(m => m.Telefono)
-    <span>Password: </span>@Html.TextBoxFor(m => m.Password, new { @placeholder = "Password", @class = "form-control" })
-    @Html.ValidationMessageFor(m => m.Password)
-    <span>Confirmar Password: </span>@Html.TextBoxFor(m => m.PasswordConfirmacion, new { @placeholder = "Confirmar password", @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Telefono)<br/>
+    <span>Password: </span>@Html.PasswordFor(m => m.Password, new { @placeholder = "Password", @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Password)<br/>
+    <span>Confirmar Password: </span>@Html.PasswordFor(m => m.PasswordConfirmacion, new { @placeholder = "Confirmar password", @class = "form-control" })
     @Html.ValidationMessageFor(m => m.PasswordConfirmacion)
     <br />
     <div class="btn-group btn-group-lg">

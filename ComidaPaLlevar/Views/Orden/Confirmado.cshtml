@@ -1,7 +1,10 @@
 ﻿@{
     ViewBag.Title = "Confirmado";
 }
-
-<h1>¡TU PEDIDO HA SIDO RECIBIDO, BUEN PROVECHO!</h1>
-<h2>Tu número de orden es @ViewBag.NumeroOrden, para cualquier aclaración consérvalo.</h2>
+<div style="text-align: center; margin-top: 100px; margin-bottom: 100px;">
+    <h1><b>¡TU PEDIDO HA SIDO RECIBIDO, BUEN PROVECHO!</b></h1>
+    <span class="glyphicon glyphicon-ok-sign" style="font-size: 120px; color: #55b600;">&nbsp;</span>
+    <span class="glyphicon glyphicon-cutlery" style="font-size:120px;"></span>
+    <h2>Tu número de orden es <span style="color:red;">@ViewBag.NumeroOrden</span>, consérvalo para cualquier aclaración.</h2>
+</div>
 
