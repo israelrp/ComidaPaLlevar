@@ -16,6 +16,12 @@ namespace ComidaPaLlevar.Business
             return menuDaoImpl.SelectAll();
         }
 
+        public List<Menus> RecuperarMenuDia()
+        {
+            MenusDaoImpl menuDaoImpl = new MenusDaoImpl();
+            return menuDaoImpl.SelectAll().Where(x=>x.FechaVigencia.Day==DateTime.Now.Day && x.FechaVigencia.Month==DateTime.Now.Month && x.FechaVigencia.Year==DateTime.Now.Year).ToList();
+        }
+
         public Menus SelectByKey(int Id)
         {
             MenusDaoImpl menuDaoImpl = new MenusDaoImpl();

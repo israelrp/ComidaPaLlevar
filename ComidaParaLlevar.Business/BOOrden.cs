@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using ComidaPallevar.Domain;
 using ComidaPaLlevar.Dal.Implementation;
 
-
 namespace ComidaPaLlevar.Business
 {
     public class BOOrden

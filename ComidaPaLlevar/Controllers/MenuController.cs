@@ -24,7 +24,7 @@ namespace ComidaPaLlevar.Controllers
             {
                 return Redirect("~/Orden/Estatus");
             }
-            List<Menus> menus = new BOMenu().RecuperarMenus();
+            List<Menus> menus = new BOMenu().RecuperarMenuDia();
             return View(menus);
         }
 

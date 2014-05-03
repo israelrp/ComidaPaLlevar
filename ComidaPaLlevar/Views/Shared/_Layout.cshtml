@@ -9,31 +9,38 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     <link href="~/fonts/oswald-bold/stylesheet.css" rel="stylesheet" />
+    <link href="~/Content/Layout.css" rel="stylesheet" />
+
 </head>
 <body style="padding-top:0px;">
-    <div class="container body-content">
-        <header class="page-header">
-            <div style="float:right;">
+    <header class="page-header">
+        <div class="container body-content">
+            <div style="float:right; margin-top:20px;">
                 @if (Session["UsuarioLogueado"] == null)
                 {
                     Html.RenderPartial("../Usuarios/PartialLoginUsuario", new ComidaPaLlevar.Models.LoginModel());
                 }
                 else
                 {
-                    ComidaPallevar.Domain.Usuarios usuario=(ComidaPallevar.Domain.Usuarios)Session["UsuarioLogueado"];
-                    <span>Hola @usuario.Nombre -- </span>@Html.ActionLink("Cerrar sesión","LogOut","Usuarios")
+                    ComidaPallevar.Domain.Usuarios usuario = (ComidaPallevar.Domain.Usuarios)Session["UsuarioLogueado"];
+                    <span>Hola @usuario.Nombre -- </span>@Html.ActionLink("Cerrar sesión", "LogOut", "Usuarios")
                     <br />
-                    <a style="color: black; text-decoration: none; font-weight: bold; font-size: 26px; color: #1891D1;" href="~/Menu/">Ver menú del día</a>    
-                }                
+                    <a style="text-decoration: none; font-weight: bold; font-size: 26px;" href="~/Menu/">Ver menú del día</a>
+                }
             </div>
-            <h1 style="font-family: 'oswaldbold';"><a style="color:black; text-decoration:none;" href="~/Home/">ComoEnCasa</a></h1>       
-            <label>Disponible sólo en la capital de Puebla</label>     
-            <div></div>
-        </header>
-        @RenderBody()
-        <hr />
+            <h1 style="font-family: 'oswaldbold';"><a style="color:white; text-decoration:none;" href="~/Home/">ComoEnCasa</a></h1>
+            <label>Disponible sólo en la capital de Puebla</label>
+        </div>               
+    </header>
+
+    <div class="container body-content">
+        
+        @RenderBody()        
         <footer style="text-align:center; font-style:italic; clear:both;">
-            <p>&copy; @DateTime.Now.Year - Desarrollado e impulsado por Novatek</p>
+            <hr />
+            <div class="fb-like" data-href="http://www.comoenksa.com/" data-layout="button" data-action="recommend" data-show-faces="true" data-share="true"></div>
+            <br/><br />
+            <p style="font-weight:bold;">&copy; @DateTime.Now.Year - Desarrollado e impulsado por Novatek</p>
         </footer>
     </div>
 
@@ -41,5 +48,15 @@
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&appId=243456835703577&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
 </body>
 </html>
