@@ -1,0 +1,13 @@
+﻿.page-header {
+    background-image:url("../images/fondo.png");
+    margin-top:0px;
+    color:white;
+}
+
+hr {
+    border: 0; 
+    height: 0; 
+    border-top: 5px double #F3F3F3; 
+    text-align:center;
+}
+
