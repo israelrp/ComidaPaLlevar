@@ -1,0 +1,54 @@
+﻿    .itemPlatillo {
+        margin-top:10px;
+    }
+
+        .itemPlatillo:nth-child(even) {
+            background-color: #FFE4E1;
+        }
+
+        .itemPlatillo:nth-child(odd) {
+            background-color: #F0F8FF;
+        }
+        
+    .imgPlatillo {
+        border-radius: 5px;
+    }
+    .contentImage, .contentDatos
+    {
+      display:inline-block;
+      vertical-align:top;
+    }
+    .contentImage {
+        margin-right:20px;
+    }
+    .contentDatos {      
+        width:70%;  
+    }
+
+    .btn {
+        background-color: #228B22;
+        color: #FFF;
+        font-weight: bold;
+    }
+        .btn:hover {
+            background-color: #FFF;
+            color: #228B22;
+            font-weight:bold;
+        }
+
+    .contentDatos p label {
+        font-weight: lighter;
+        font-size: 12px;
+        text-transform: none;
+    }
+    .contentDatos p span {
+        color: #708090;
+        text-transform: capitalize;
+        font-weight: bolder;
+    }
+
+    .nombrePlatillo label,
+    .precioPlatillo label {
+        font-size: 16px !important;
+        font-style: italic;
+    }
