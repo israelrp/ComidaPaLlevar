@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ComidaPallevar.Domain;
+using ComidaPaLlevar.Domain;
 using ComidaPaLlevar.Business;
 using DevExpress.Web.Mvc;
 
@@ -17,14 +17,14 @@ namespace ComidaPaLlevar.Controllers
         {
             if (Session["UsuarioLogueado"] == null)
                 return Redirect("~/Home/Index");
-            Usuarios usuario = (Usuarios)Session["UsuarioLogueado"];
+            Usuario usuario = (Usuario)Session["UsuarioLogueado"];
             BOOrden boOrden = new BOOrden();
-            Ordenes orden = boOrden.BuscarOrdenDelDia(usuario.Id);
+            Orden orden = boOrden.BuscarOrdenDelDia(usuario.Id);
             if (orden != null)
             {
                 return Redirect("~/Orden/Estatus");
             }
-            List<Menus> menus = new BOMenu().RecuperarMenuDia();
+            List<Menu> menus = new BOMenu().RecuperarMenuDia();            
             return View(menus);
         }
 
@@ -33,7 +33,7 @@ namespace ComidaPaLlevar.Controllers
         {
             if (Session["UsuarioLogueado"] == null)
                 return Redirect("~/Home/Index");
-            return Redirect("~/Orden/Index?MenuId="+MenuId.ToString());
+            return Redirect("~/Complementos/Index?MenuId="+MenuId.ToString());
         }
 
 
@@ -46,10 +46,10 @@ namespace ComidaPaLlevar.Controllers
         }
 
         [HttpPost, ValidateInput(false)]
-        public ActionResult GridViewPartialMenusAddNew([ModelBinder(typeof(DevExpressEditorsBinder))] ComidaPallevar.Domain.Menus item)
+        public ActionResult GridViewPartialMenusAddNew([ModelBinder(typeof(DevExpressEditorsBinder))] ComidaPaLlevar.Domain.Menu item)
         {
             BOMenu boMenu = new BOMenu();
-            List<Menus> model = new List<Menus>();
+            List<Menu> model = new List<Menu>();
             if (ModelState.IsValid)
             {
                 try
@@ -68,10 +68,10 @@ namespace ComidaPaLlevar.Controllers
             return PartialView("_GridViewPartialMenus", model);
         }
         [HttpPost, ValidateInput(false)]
-        public ActionResult GridViewPartialMenusUpdate([ModelBinder(typeof(DevExpressEditorsBinder))] ComidaPallevar.Domain.Menus item)
+        public ActionResult GridViewPartialMenusUpdate([ModelBinder(typeof(DevExpressEditorsBinder))] ComidaPaLlevar.Domain.Menu item)
         {
             BOMenu boMenu = new BOMenu();
-            List<Menus> model = new List<Menus>();
+            List<Menu> model = new List<Menu>();
             if (ModelState.IsValid)
             {
                 try
@@ -93,7 +93,7 @@ namespace ComidaPaLlevar.Controllers
         public ActionResult GridViewPartialMenusDelete(System.Int32 Id)
         {
             BOMenu boMenu = new BOMenu();
-            List<Menus> model = new List<Menus>();
+            List<Menu> model = new List<Menu>();
             if (Id >= 0)
             {
                 try

@@ -1,5 +1,5 @@
 using System;
-using ComidaPallevar.Domain.Base;
+using ComidaPaLlevar.Domain.Base;
 namespace ComidaPaLlevar.Dal.IGenerics
 {
 	/// <summary>

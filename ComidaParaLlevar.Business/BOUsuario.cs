@@ -4,56 +4,56 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ComidaPaLlevar.Dal.Implementation;
-using ComidaPallevar.Domain;
+using ComidaPaLlevar.Domain;
 
 namespace ComidaPaLlevar.Business
 {
     public class BOUsuario
     {
-        public Usuarios NuevoUsuario(Usuarios usuario)
+        public Usuario NuevoUsuario(Usuario usuario)
         {
-            UsuariosDaoImpl usuariosDaoImpl = new UsuariosDaoImpl();
-            Usuarios usuarioExiste = usuariosDaoImpl.SelectAll().Where(x => x.Email == usuario.Email).FirstOrDefault();
+            UsuarioDaoImpl UsuarioDaoImpl = new UsuarioDaoImpl();
+            Usuario usuarioExiste = UsuarioDaoImpl.SelectAll().Where(x => x.Email == usuario.Email).FirstOrDefault();
             if (usuarioExiste == null)
-                return usuariosDaoImpl.Insert(usuario);
+                return UsuarioDaoImpl.Insert(usuario);
             else
                 return null;
         }
 
-        public Usuarios ActualizarUsuario(Usuarios usuario)
+        public Usuario ActualizarUsuario(Usuario usuario)
         {
-            UsuariosDaoImpl usuariosDaoImpl = new UsuariosDaoImpl();
-            return usuariosDaoImpl.Update(usuario);
+            UsuarioDaoImpl UsuarioDaoImpl = new UsuarioDaoImpl();
+            return UsuarioDaoImpl.Update(usuario);
         }
 
-        public bool EliminarUsuario(Usuarios usuario)
+        public bool EliminarUsuario(Usuario usuario)
         {
-            UsuariosDaoImpl usuariosDaoImpl = new UsuariosDaoImpl();
-            return usuariosDaoImpl.Delete(usuario);
+            UsuarioDaoImpl UsuarioDaoImpl = new UsuarioDaoImpl();
+            return UsuarioDaoImpl.Delete(usuario);
         }
 
         public bool EliminarUsuario(int Id)
         {
-            UsuariosDaoImpl usuariosDaoImpl = new UsuariosDaoImpl();
-            return usuariosDaoImpl.Delete(new Usuarios { Id=Id });
+            UsuarioDaoImpl UsuarioDaoImpl = new UsuarioDaoImpl();
+            return UsuarioDaoImpl.Delete(new Usuario { Id=Id });
         }
 
-        public Usuarios SelectByKey(int UsuarioId)
+        public Usuario SelectByKey(int UsuarioId)
         {
-            UsuariosDaoImpl usuariosDaoImpl = new UsuariosDaoImpl();
-            return usuariosDaoImpl.SelectByKey(new Usuarios { Id = UsuarioId });
+            UsuarioDaoImpl UsuarioDaoImpl = new UsuarioDaoImpl();
+            return UsuarioDaoImpl.SelectByKey(new Usuario { Id = UsuarioId });
         }
 
-        public List<Usuarios> RecuperarUsuarios()
+        public List<Usuario> RecuperarUsuario()
         {
-            UsuariosDaoImpl usuariosDaoImpl = new UsuariosDaoImpl();
-            return usuariosDaoImpl.SelectAll();
+            UsuarioDaoImpl UsuarioDaoImpl = new UsuarioDaoImpl();
+            return UsuarioDaoImpl.SelectAll();
         }
 
-        public Usuarios Autenticar(string email, string password)
+        public Usuario Autenticar(string email, string password)
         {
-            UsuariosDaoImpl usuariosDaoImpl = new UsuariosDaoImpl();
-            Usuarios usuario = usuariosDaoImpl.SelectAll().Where(x => x.Email.ToLower() == email.ToLower() && x.Password.ToLower()==password.ToLower()).FirstOrDefault();
+            UsuarioDaoImpl UsuarioDaoImpl = new UsuarioDaoImpl();
+            Usuario usuario = UsuarioDaoImpl.SelectAll().Where(x => x.Email.ToLower() == email.ToLower() && x.Password.ToLower()==password.ToLower()).FirstOrDefault();
             return usuario;
         }
     }

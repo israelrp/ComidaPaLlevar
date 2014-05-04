@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using ComidaPallevar.Domain;
+using ComidaPaLlevar.Domain;
 using ComidaPaLlevar.Business;
 
 namespace ComidaPaLlevar.Controllers
@@ -12,7 +12,7 @@ namespace ComidaPaLlevar.Controllers
     public class ServiceUsuarioController : ApiController
     {
         [HttpPost]
-        public Usuarios NuevoUsuario(Usuarios usuario)
+        public Usuario NuevoUsuario(Usuario usuario)
         {
             return new BOUsuario().NuevoUsuario(usuario);
         }
@@ -21,7 +21,7 @@ namespace ComidaPaLlevar.Controllers
         public int Autenticar(string email, string password)
         {
             int id=0;
-            Usuarios usuario=new BOUsuario().Autenticar(email, password);
+            Usuario usuario=new BOUsuario().Autenticar(email, password);
             if(usuario!=null){
                 id=usuario.Id;
             }
@@ -29,7 +29,7 @@ namespace ComidaPaLlevar.Controllers
         }
 
         [HttpPost]
-        public bool EliminarUsuario(Usuarios usuario)
+        public bool EliminarUsuario(Usuario usuario)
         {
             BOUsuario boUsuario = new BOUsuario();
             return boUsuario.EliminarUsuario(usuario);

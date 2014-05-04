@@ -22,7 +22,7 @@
                 }
                 else
                 {
-                    ComidaPallevar.Domain.Usuarios usuario = (ComidaPallevar.Domain.Usuarios)Session["UsuarioLogueado"];
+                    ComidaPaLlevar.Domain.Usuario usuario = (ComidaPaLlevar.Domain.Usuario)Session["UsuarioLogueado"];
                     <span>Hola @usuario.Nombre -- </span>@Html.ActionLink("Cerrar sesión", "LogOut", "Usuarios")
                     <br />
                     <a style="text-decoration: none; font-weight: bold; font-size: 26px;" href="~/Menu/">Ver menú del día</a>

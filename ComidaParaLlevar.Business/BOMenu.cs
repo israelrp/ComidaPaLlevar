@@ -4,46 +4,46 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ComidaPaLlevar.Dal.Implementation;
-using ComidaPallevar.Domain;
+using ComidaPaLlevar.Domain;
 
 namespace ComidaPaLlevar.Business
 {
     public class BOMenu
     {
-        public List<Menus> RecuperarMenus()
+        public List<Menu> RecuperarMenus()
         {
-            MenusDaoImpl menuDaoImpl = new MenusDaoImpl();
+            MenuDaoImpl menuDaoImpl = new MenuDaoImpl();
             return menuDaoImpl.SelectAll();
         }
 
-        public List<Menus> RecuperarMenuDia()
+        public List<Menu> RecuperarMenuDia()
         {
-            MenusDaoImpl menuDaoImpl = new MenusDaoImpl();
+            MenuDaoImpl menuDaoImpl = new MenuDaoImpl();
             return menuDaoImpl.SelectAll().Where(x=>x.FechaVigencia.Day==DateTime.Now.Day && x.FechaVigencia.Month==DateTime.Now.Month && x.FechaVigencia.Year==DateTime.Now.Year).ToList();
         }
 
-        public Menus SelectByKey(int Id)
+        public Menu SelectByKey(int Id)
         {
-            MenusDaoImpl menuDaoImpl = new MenusDaoImpl();
-            return menuDaoImpl.SelectByKey(new Menus { Id=Id });
+            MenuDaoImpl menuDaoImpl = new MenuDaoImpl();
+            return menuDaoImpl.SelectByKey(new Menu { Id=Id });
         }
 
-        public Menus InsertarMenu(Menus menu)
+        public Menu InsertarMenu(Menu menu)
         {
-            MenusDaoImpl menuDaoImpl = new MenusDaoImpl();
+            MenuDaoImpl menuDaoImpl = new MenuDaoImpl();
             return menuDaoImpl.Insert(menu);
         }
 
-        public Menus ActualizarMenu(Menus menu)
+        public Menu ActualizarMenu(Menu menu)
         {
-            MenusDaoImpl menuDaoImpl = new MenusDaoImpl();
+            MenuDaoImpl menuDaoImpl = new MenuDaoImpl();
             return menuDaoImpl.Update(menu);
         }
 
         public bool EliminarMenu(int Id)
         {
-            MenusDaoImpl menuDaoImpl = new MenusDaoImpl();
-            return menuDaoImpl.Delete(new Menus { Id = Id });
+            MenuDaoImpl menuDaoImpl = new MenuDaoImpl();
+            return menuDaoImpl.Delete(new Menu { Id = Id });
         }
     }
 }

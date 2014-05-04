@@ -3,50 +3,50 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ComidaPallevar.Domain;
+using ComidaPaLlevar.Domain;
 using ComidaPaLlevar.Dal.Implementation;
 
 namespace ComidaPaLlevar.Business
 {
     public class BOOrden
     {
-        public Ordenes BuscarOrdenDelDia(int UsuarioId)
+        public Orden BuscarOrdenDelDia(int UsuarioId)
         {
-            Ordenes ordenesUsuario=new Ordenes();
-            OrdenesDaoImpl ordenesDaoImpl = new OrdenesDaoImpl();
+            Orden ordenesUsuario=new Orden();
+            OrdenDaoImpl ordenesDaoImpl = new OrdenDaoImpl();
             ordenesUsuario = ordenesDaoImpl.SelectAll().Where(x => x.UsuarioId == UsuarioId && x.FechaSolicitud.Day==DateTime.Now.Day && x.FechaSolicitud.Month==DateTime.Now.Month).FirstOrDefault();
             return ordenesUsuario;
         }
 
-        public Ordenes NuevaOrden(Ordenes orden)
+        public Orden NuevaOrden(Orden orden)
         {
-            OrdenesDaoImpl ordenesDaoImpl = new OrdenesDaoImpl();
+            OrdenDaoImpl ordenesDaoImpl = new OrdenDaoImpl();
             return ordenesDaoImpl.Insert(orden);
         }
 
-        public List<Ordenes> RecuperarOrdenes()
+        public List<Orden> RecuperarOrdenes()
         {
-            OrdenesDaoImpl ordenesDaoImpl = new OrdenesDaoImpl();
+            OrdenDaoImpl ordenesDaoImpl = new OrdenDaoImpl();
             return ordenesDaoImpl.SelectAll();
         }
 
-        public Ordenes ActualizarOrden(Ordenes orden)
+        public Orden ActualizarOrden(Orden orden)
         {
-            OrdenesDaoImpl ordenesDaoImpl = new OrdenesDaoImpl();
+            OrdenDaoImpl ordenesDaoImpl = new OrdenDaoImpl();
             return ordenesDaoImpl.Update(orden);
         }
 
         public bool EliminarOrden(int UsuarioId, int MenuId)
         {
-            OrdenesDaoImpl ordenesDaoImpl = new OrdenesDaoImpl();
-            return ordenesDaoImpl.Delete(new Ordenes { MenuId=MenuId, UsuarioId=UsuarioId });
+            OrdenDaoImpl ordenesDaoImpl = new OrdenDaoImpl();
+            return ordenesDaoImpl.Delete(new Orden { MenuId=MenuId, UsuarioId=UsuarioId });
         }
 
         public bool ActualizarEstatusOrden(int UsuarioId, int MenuId, byte EstatusOrden)
         {
             bool retorno = false;
-            OrdenesDaoImpl ordenesDaoImpl = new OrdenesDaoImpl();
-            Ordenes orden = ordenesDaoImpl.SelectByKey(new Ordenes { UsuarioId = UsuarioId, MenuId = MenuId });
+            OrdenDaoImpl ordenesDaoImpl = new OrdenDaoImpl();
+            Orden orden = ordenesDaoImpl.SelectByKey(new Orden { UsuarioId = UsuarioId, MenuId = MenuId });
             orden.Estatus = EstatusOrden;
             if (ordenesDaoImpl.Update(orden) != null)
             {

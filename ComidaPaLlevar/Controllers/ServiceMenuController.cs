@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using ComidaPallevar.Domain;
+using ComidaPaLlevar.Domain;
 using ComidaPaLlevar.Business;
 
 namespace ComidaPaLlevar.Controllers
@@ -12,14 +12,14 @@ namespace ComidaPaLlevar.Controllers
     public class ServiceMenuController : ApiController
     {
         [HttpGet]
-        public List<Menus> RecuperarMenus()
+        public List<Menu> RecuperarMenus()
         {
             BOMenu boMenu = new BOMenu();
             return boMenu.RecuperarMenus();
         }
 
         [HttpPost]
-        public Menus InsertarMenu(Menus menu)
+        public Menu InsertarMenu(Menu menu)
         {
             BOMenu boMenu = new BOMenu();
             return boMenu.InsertarMenu(menu);

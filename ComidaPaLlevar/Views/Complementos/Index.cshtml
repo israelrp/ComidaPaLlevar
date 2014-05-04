@@ -1,0 +1,76 @@
+﻿@model ComidaPaLlevar.Models.ListaOrden
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/Menu.css" type="text/css" rel="stylesheet" />
+<h2 style="color: #696969; text-transform:capitalize; font-variant:small-caps; font-style:italic;">Complementa tu orden</h2>
+<div>
+    @using (Html.BeginForm("Index","Orden", FormMethod.Get))
+    {
+        int i=0;
+        foreach (var item in (List<ComidaPaLlevar.Domain.Producto>)ViewBag.Productos)
+        {
+            <ul class="list-group">
+                <li class="list-group-item itemPlatillo">
+                    <div class="contentImage">
+                        <img src="@item.FotoUrl" alt="FotoMenu" style="width:200px; height:auto; " class="imgPlatillo" />
+                    </div>
+                    <div class="contentDatos">
+                        <p class="nombrePlatillo">
+                            <span>Plato fuerte:</span>
+                            <label>@item.Nombre</label>
+                        </p>
+
+                        <p class="descripcionPlatillo">
+                            <span>Descripción:</span>
+                            <label>@item.Descripción</label>
+                        </p>
+
+                        <p class="precioPlatillo">
+                            <span>Precio:</span>
+                            <label>@item.Precio.ToString("c")</label>
+                        </p>
+                        <p class="precioPlatillo">
+                            <span>Cantidad:</span>
+                            @Html.DropDownList("CantidadesProducto["+i+"].Cantidad", new SelectList(new List<int> { 0, 1, 2, 3, 4 }))
+                            @Html.Hidden("CantidadesProducto["+i+"].ProductoId",item.Id)
+                        </p>
+                    </div>
+                </li>
+            </ul>
+            i += 1;
+        }
+    
+        <h4 style="color: #696969; text-transform:capitalize; font-variant:small-caps; font-style:italic;">Menu seleccionado</h4>
+        <ul class="list-group">
+            <li class="list-group-item itemPlatillo">
+                <div class="contentImage">
+                    <img src="@Model.Menu.Imagen" alt="FotoMenu" style="width:200px; height:auto; " class="imgPlatillo" />
+                </div>
+                <div class="contentDatos">
+                    <p class="nombrePlatillo">
+                        <span>Plato fuerte:</span>
+                        <label>@Model.Menu.Nombre</label>
+                    </p>
+
+                    <p class="descripcionPlatillo">
+                        <span>Descripción del platillo:</span>
+                        <label>@Model.Menu.Descripcion</label>
+                    </p>
+
+                    <p class="precioPlatillo">
+                        <span>Precio:</span>
+                        <label>@Model.Menu.Precio.ToString("c")</label>
+                    </p>
+                </div>
+            </li>
+        </ul>
+        @Html.HiddenFor(m=>m.MenuId)
+        <button class="btn btn-default" style="text-align:right;" type="submit">
+            <span class="glyphicon glyphicon-ok-sign"></span><span> CERRAR PEDIDO </span>
+        </button>
+    }
+</div>
+
+
+

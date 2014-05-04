@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ComidaPaLlevar.Models;
-using ComidaPallevar.Domain;
+using ComidaPaLlevar.Domain;
 using ComidaPaLlevar.Business;
 using DevExpress.Web.Mvc;
 
@@ -22,7 +22,7 @@ namespace ComidaPaLlevar.Controllers
         [HttpPost]
         public RedirectResult PartialRegistroUsuario(RegistroUsuarioModel registro)
         {
-            Usuarios usuario = new Usuarios();
+            Usuario usuario = new Usuario();
             usuario.Nombre = registro.Nombre;
             usuario.Email = registro.Email;
             usuario.Password = registro.PasswordConfirmacion;
@@ -53,7 +53,7 @@ namespace ComidaPaLlevar.Controllers
         public RedirectResult PartialLoginUsuario(LoginModel login)
         {
             BOUsuario boUsuario = new BOUsuario();
-            Usuarios usuario = boUsuario.Autenticar(login.Email, login.Password);
+            Usuario usuario = boUsuario.Autenticar(login.Email, login.Password);
             if (usuario != null)
             {
                 Session["UsuarioLogueado"] = usuario;
@@ -70,15 +70,15 @@ namespace ComidaPaLlevar.Controllers
         [ValidateInput(false)]
         public ActionResult GridViewPartialClientes()
         {
-            var model = new BOUsuario().RecuperarUsuarios();
+            var model = new BOUsuario().RecuperarUsuario();
             return PartialView("_GridViewPartialClientes", model);
         }
 
         [HttpPost, ValidateInput(false)]
-        public ActionResult GridViewPartialClientesAddNew([ModelBinder(typeof(DevExpressEditorsBinder))] ComidaPallevar.Domain.Usuarios item)
+        public ActionResult GridViewPartialClientesAddNew([ModelBinder(typeof(DevExpressEditorsBinder))] ComidaPaLlevar.Domain.Usuario item)
         {
             BOUsuario boUsuario = new BOUsuario();
-            List<Usuarios> model = new List<Usuarios>();
+            List<Usuario> model = new List<Usuario>();
             if (ModelState.IsValid)
             {
                 try
@@ -93,14 +93,14 @@ namespace ComidaPaLlevar.Controllers
             }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-            model = boUsuario.RecuperarUsuarios();
+            model = boUsuario.RecuperarUsuario();
             return PartialView("_GridViewPartialClientes", model);
         }
         [HttpPost, ValidateInput(false)]
-        public ActionResult GridViewPartialClientesUpdate([ModelBinder(typeof(DevExpressEditorsBinder))] ComidaPallevar.Domain.Usuarios item)
+        public ActionResult GridViewPartialClientesUpdate([ModelBinder(typeof(DevExpressEditorsBinder))] ComidaPaLlevar.Domain.Usuario item)
         {
             BOUsuario boUsuario = new BOUsuario();
-            List<Usuarios> model = new List<Usuarios>();
+            List<Usuario> model = new List<Usuario>();
             if (ModelState.IsValid)
             {
                 try
@@ -115,14 +115,14 @@ namespace ComidaPaLlevar.Controllers
             }
             else
                 ViewData["EditError"] = "Please, correct all errors.";
-            model = boUsuario.RecuperarUsuarios();
+            model = boUsuario.RecuperarUsuario();
             return PartialView("_GridViewPartialClientes", model);
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult GridViewPartialClientesDelete(System.Int32 Id)
         {
             BOUsuario boUsuario = new BOUsuario();
-            List<Usuarios> model = new List<Usuarios>();
+            List<Usuario> model = new List<Usuario>();
             if (Id >= 0)
             {
                 try
@@ -135,7 +135,7 @@ namespace ComidaPaLlevar.Controllers
                     ViewData["EditError"] = e.Message;
                 }
             }
-            model = boUsuario.RecuperarUsuarios();
+            model = boUsuario.RecuperarUsuario();
             return PartialView("_GridViewPartialClientes", model);
         }
 	}

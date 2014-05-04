@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="BOMenu.cs" />
     <Compile Include="BOOrden.cs" />
+    <Compile Include="BOProducto.cs" />
     <Compile Include="BOUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\EmailSender.cs" />

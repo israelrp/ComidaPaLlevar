@@ -1,7 +1,8 @@
-﻿@model ComidaPallevar.Domain.Ordenes
+﻿@model ComidaPaLlevar.Models.ListaOrden
 @{
     ViewBag.Title = "Index";
 }
+<link href="~/Content/Menu.css" type="text/css" rel="stylesheet" />
 <style>
     .text-area{
         width:500px;
@@ -10,32 +11,78 @@
 </style>
 <h2 style="color: #696969; text-transform:capitalize; font-variant:small-caps; font-style:italic;">Confirmar orden</h2>
 <div>
-   <span>
-        <li class="list-group-item" style="height:210px;">
-            <div style="float:left;">
-                <h3 style="padding:0px; margin:0px; font-weight:bold;">@Model.Menu.Nombre</h3>
-                <img src="@Model.Menu.Imagen" alt="FotoMenu" style="width:200px; height:auto;" />
-            </div>
-            <div style="margin-top:25px; margin-left:220px;">                
-                <h4 style="padding:0px; margin:0px;">@Model.Menu.Descripcion</h4><br />                
-                <b style="font-weight:bold; color: red; font-size:16px;">@Model.Menu.Precio.ToString("c")</b>
-            </div>            
-        </li>
-    </span>
+    <ul class="list-group">        
+            <li class="list-group-item itemPlatillo">
+                <div class="contentImage">
+                    <img src="@Model.Menu.Imagen" alt="FotoMenu" style="width:200px; height:auto; " class="imgPlatillo" />
+                </div>
+                <div class="contentDatos">
+                    <p class="nombrePlatillo">
+                        <span>Plato fuerte:</span>
+                        <label>@Model.Menu.Nombre</label>
+                    </p>
+
+                    <p class="descripcionPlatillo">
+                        <span>Descripción del platillo:</span>
+                        <label>@Model.Menu.Descripcion</label>
+                    </p>
+
+                    <p class="precioPlatillo">
+                        <span>Precio:</span>
+                        <label>@Model.Menu.Precio.ToString("c")</label>
+                    </p>                    
+                </div>
+            </li>
+    </ul>
     <br/>
-    <div style="text-align:center;">
-        @using (Html.BeginForm("Index","Orden",FormMethod.Post))
+    int i=0;
+    foreach (var item in (List<comidapallevar.domain.producto>
+        )ViewBag.Productos)
         {
-            <label>Comentarios:</label><br />
-            @Html.TextAreaFor(m => m.Comentarios, new { @class = "text-area" })<br />
-            <label>Dirección:</label><br />
-            @Html.TextAreaFor(m => m.Direccion, new { @class = "text-area" })<br />
-            @Html.HiddenFor(m => m.MenuId)
-            @Html.HiddenFor(m => m.UsuarioId)<br />
-    <button class="btn btn-default" type="submit">
-        <span class="glyphicon glyphicon-ok-sign"></span><span> Confirmar pedido</span>
-    </button>
+        <ul class="list-group">
+            <li class="list-group-item itemPlatillo">
+                <div class="contentImage">
+                    <img src="@item.FotoUrl" alt="FotoMenu" style="width:200px; height:auto; " class="imgPlatillo" />
+                </div>
+                <div class="contentDatos">
+                    <p class="nombrePlatillo">
+                        <span>Plato fuerte:</span>
+                        <label>@item.Nombre</label>
+                    </p>
+
+                    <p class="descripcionPlatillo">
+                        <span>Descripción:</span>
+                        <label>@item.Descripción</label>
+                    </p>
+
+                    <p class="precioPlatillo">
+                        <span>Precio:</span>
+                        <label>@item.Precio.ToString("c")</label>
+                    </p>
+                    <p class="precioPlatillo">
+                        <span>Cantidad:</span>
+                        @Html.DropDownList("CantidadesProducto[" + i + "].Cantidad", new SelectList(new List<int> { 0, 1, 2, 3, 4 }))
+                        @Html.Hidden("CantidadesProducto[" + i + "].ProductoId", item.Id)
+                    </p>
+                </div>
+            </li>
+        </ul>
+        i += 1;
         }
-    </div>
+        <br />
+        <div style="text-align:center;">
+            @using (Html.BeginForm("Index", "Orden", FormMethod.Post))
+            {
+                <label>Comentarios:</label><br />
+                @Html.TextAreaFor(m => m.Comentarios, new { @class = "text-area" })<br />
+                <label>Dirección:</label><br />
+                @Html.TextAreaFor(m => m.Direccion, new { @class = "text-area" })<br />
+                @Html.HiddenFor(m => m.MenuId)
+                @Html.HiddenFor(m => m.UsuarioId)<br />
+                <button class="btn btn-default" type="submit">
+                    <span class="glyphicon glyphicon-ok-sign"></span><span> Confirmar pedido</span>
+                </button>
+            }
+        </div>
 </div>
 

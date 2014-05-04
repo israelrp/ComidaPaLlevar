@@ -1,65 +1,8 @@
-﻿@model List<ComidaPallevar.Domain.Menus>
+﻿@model List<ComidaPaLlevar.Domain.Menu>
 @{
     ViewBag.Title = "Index";
 }
-
-<style>
-    .itemPlatillo {
-        margin-top:10px;
-    }
-
-        .itemPlatillo:nth-child(even) {
-            background-color: #FFE4E1;
-        }
-
-        .itemPlatillo:nth-child(odd) {
-            background-color: #F0F8FF;
-        }
-        
-    .imgPlatillo {
-        border-radius: 5px;
-    }
-    .contentImage, .contentDatos
-    {
-      display:inline-block;
-      vertical-align:top;
-    }
-    .contentImage {
-        margin-right:20px;
-    }
-    .contentDatos {        
-    }
-
-    .btn {
-        background-color: #228B22;
-        color: #FFF;
-        font-weight: bold;
-    }
-        .btn:hover {
-            background-color: #FFF;
-            color: #228B22;
-            font-weight:bold;
-        }
-
-    .contentDatos p label {
-        font-weight: lighter;
-        font-size: 12px;
-        text-transform: none;
-    }
-    .contentDatos p span {
-        color: #708090;
-        text-transform: capitalize;
-        font-weight: bolder;
-    }
-
-    .nombrePlatillo label,
-    .precioPlatillo label {
-        font-size: 16px !important;
-        font-style: italic;
-    }
-
-
-</style>
+<link href="~/Content/Menu.css" type="text/css" rel="stylesheet"/>
 
 <h2 style="color: #696969; text-transform:capitalize; font-variant:small-caps; font-style:italic;">Menú del día</h2>
 <h5>Su pedido deber ser confirmado antes de la 1:00 P.M., despues de esa hora el sistema cerrara el menú.</h5>

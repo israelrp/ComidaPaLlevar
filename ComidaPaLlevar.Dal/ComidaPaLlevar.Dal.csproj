@@ -39,14 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntradaDao.cs" />
     <Compile Include="IGenerics\IDelete.cs" />
     <Compile Include="IGenerics\IInsert.cs" />
     <Compile Include="IGenerics\ISelect.cs" />
     <Compile Include="IGenerics\IUpdate.cs" />
-    <Compile Include="MenusDao.cs" />
-    <Compile Include="OrdenesDao.cs" />
+    <Compile Include="MenuDao.cs" />
+    <Compile Include="OrdenDao.cs" />
+    <Compile Include="ProductoDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UsuariosDao.cs" />
+    <Compile Include="ProveedorDao.cs" />
+    <Compile Include="SalidaDao.cs" />
+    <Compile Include="UsuarioDao.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ComidaPaLlevar.Domain\ComidaPaLlevar.Domain.csproj">

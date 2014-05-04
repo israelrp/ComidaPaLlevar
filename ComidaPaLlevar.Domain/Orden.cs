@@ -4,20 +4,21 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ComidaPallevar.Domain
+namespace ComidaPaLlevar.Domain
 {
 	/// <summary>
-	/// Autor: Novatek
-	/// Comentarios: Clases de datos
+	/// Autor: Israel Romero Ponce
+	/// Comentarios: Clases de objetos de datos
 	/// </summary>
 	[Table("Ordenes")]
-	public class Ordenes : Base.BaseObjectDomain
+	public class Orden : Base.BaseObjectDomain
 	{
 		[Required]
 		[Key, Column(Order=0)]
+		public int Id { get; set; } //(int, not null)
+		[Required]
 		public int UsuarioId { get; set; } //(int, not null)
 		[Required]
-		[Key, Column(Order=1)]
 		public int MenuId { get; set; } //(int, not null)
 		[Required]
 		public DateTime FechaSolicitud { get; set; } //(datetime, not null)
@@ -32,6 +33,6 @@ namespace ComidaPallevar.Domain
 		[Required]
 		public byte Estatus { get; set; } //(tinyint, not null)
 
-        public Menus Menu { get; set; }
+        public Menu Menu { get; set; }
 	}
 }

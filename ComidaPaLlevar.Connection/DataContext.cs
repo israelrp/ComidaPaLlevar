@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using ComidaPallevar.Domain;
+using ComidaPaLlevar.Domain;
 using System.Data.Entity.ModelConfiguration.Conventions;
 namespace ComidaPaLlevar.Connection
 {
@@ -14,8 +14,8 @@ namespace ComidaPaLlevar.Connection
 	/// </summary>
 	public class DataContext : DbContext
 	{
-		public DbSet<Menus> Menus { get; set; }
-		public DbSet<Usuarios> Usuarios { get; set; }
-		public DbSet<Ordenes> Ordenes { get; set; }
+		public DbSet<Menu> Menus { get; set; }
+		public DbSet<Usuario> Usuarios { get; set; }
+		public DbSet<Orden> Ordenes { get; set; }
 	}
 }

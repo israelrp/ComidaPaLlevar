@@ -1,5 +1,5 @@
 using System;
-namespace ComidaPallevar.Domain.Base
+namespace ComidaPaLlevar.Domain.Base
 {
 	/// <summary>
 	/// Autor: Novatek

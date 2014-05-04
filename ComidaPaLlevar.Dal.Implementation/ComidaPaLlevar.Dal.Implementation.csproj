@@ -47,10 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstracts\BaseDaoImpl.cs" />
-    <Compile Include="MenusDaoImpl.cs" />
-    <Compile Include="OrdenesDaoImpl.cs" />
+    <Compile Include="EntradaDaoImpl.cs" />
+    <Compile Include="MenuDaoImpl.cs" />
+    <Compile Include="OrdenDaoImpl.cs" />
+    <Compile Include="ProductoDaoImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UsuariosDaoImpl.cs" />
+    <Compile Include="ProveedorDaoImpl.cs" />
+    <Compile Include="SalidaDaoImpl.cs" />
+    <Compile Include="UsuarioDaoImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ComidaPaLlevar.Connection\ComidaPaLlevar.Connection.csproj">

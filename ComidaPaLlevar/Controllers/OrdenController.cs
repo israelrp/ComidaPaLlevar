@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ComidaPaLlevar.Business;
-using ComidaPallevar.Domain;
+using ComidaPaLlevar.Domain;
 using DevExpress.Web.Mvc;
 
 namespace ComidaPaLlevar.Controllers
@@ -14,32 +14,41 @@ namespace ComidaPaLlevar.Controllers
     {
         //
         // GET: /Orden/
-        public ActionResult Index(int MenuId)
+        public ActionResult Index(ComidaPaLlevar.Models.ListaOrden listaOrden)
         {
             if (Session["UsuarioLogueado"] == null)
                 return Redirect("~/Home/Index");
-            Ordenes orden = new Ordenes();
-            orden.Menu = new BOMenu().SelectByKey(MenuId);
-            return View(orden);
+            listaOrden.Menu = new BOMenu().SelectByKey(listaOrden.MenuId);
+            foreach (var item in listaOrden.CantidadesProducto)
+            {
+                if (item.Cantidad > 0)
+                {
+                    item.Producto = new BOProducto().SelectByKey(item.ProductoId);
+                }
+            }
+            return View(listaOrden);
         }
 
+        [ActionName("Index")]
         [HttpPost]
-        public RedirectToRouteResult Index(Ordenes orden)
+        public RedirectToRouteResult Confirmar(ComidaPaLlevar.Models.ListaOrden listaOrden)
         {
             if (Session["UsuarioLogueado"] == null)
                 return RedirectToAction("Index","Home");
             BOOrden boOrden = new BOOrden();
+            Orden orden = new Orden();
             orden.FechaSolicitud = DateTime.Now;
-            Usuarios usuario=(Usuarios)Session["UsuarioLogueado"];
+            Usuario usuario=(Usuario)Session["UsuarioLogueado"];
             orden.UsuarioId = usuario.Id;
+            orden.MenuId = listaOrden.MenuId;
             orden=boOrden.NuevaOrden(orden);
             return RedirectToAction("Confirmado",orden);
         }
 
-        public ActionResult Confirmado(Ordenes orden) 
+        public ActionResult Confirmado(Orden orden) 
         {
             int numeroOrden = orden.UsuarioId + orden.MenuId + orden.FechaSolicitud.Day + orden.FechaSolicitud.Second;
-            Usuarios usuario = new BOUsuario().SelectByKey(orden.UsuarioId);
+            Usuario usuario = new BOUsuario().SelectByKey(orden.UsuarioId);
             ViewBag.NumeroOrden = usuario.Nombre.Substring(0,3).ToUpper()+ numeroOrden.ToString(); 
             return View();
         }
@@ -48,8 +57,8 @@ namespace ComidaPaLlevar.Controllers
         {
             if (Session["UsuarioLogueado"] == null)
                 return RedirectToAction("Index", "Home");
-            Usuarios usuario = (Usuarios)Session["UsuarioLogueado"];
-            Ordenes orden = new BOOrden().BuscarOrdenDelDia(usuario.Id);
+            Usuario usuario = (Usuario)Session["UsuarioLogueado"];
+            Orden orden = new BOOrden().BuscarOrdenDelDia(usuario.Id);
             int numeroOrden = orden.UsuarioId + orden.MenuId + orden.FechaSolicitud.Day + orden.FechaSolicitud.Second;
             ViewBag.NumeroOrden = usuario.Nombre.Substring(0, 3).ToUpper() + numeroOrden.ToString(); 
             return View();
@@ -63,7 +72,7 @@ namespace ComidaPaLlevar.Controllers
         }
 
         [HttpPost, ValidateInput(false)]
-        public ActionResult GridViewPartialOrdenesAddNew([ModelBinder(typeof(DevExpressEditorsBinder))] ComidaPallevar.Domain.Ordenes item)
+        public ActionResult GridViewPartialOrdenesAddNew([ModelBinder(typeof(DevExpressEditorsBinder))] ComidaPaLlevar.Domain.Orden item)
         {
             var model = new object[0];
             if (ModelState.IsValid)
@@ -82,7 +91,7 @@ namespace ComidaPaLlevar.Controllers
             return PartialView("_GridViewPartialOrdenes", model);
         }
         [HttpPost, ValidateInput(false)]
-        public ActionResult GridViewPartialOrdenesUpdate([ModelBinder(typeof(DevExpressEditorsBinder))] ComidaPallevar.Domain.Ordenes item)
+        public ActionResult GridViewPartialOrdenesUpdate([ModelBinder(typeof(DevExpressEditorsBinder))] ComidaPaLlevar.Domain.Orden item)
         {
             var model = new object[0];
             if (ModelState.IsValid)
