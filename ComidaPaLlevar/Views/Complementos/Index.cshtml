@@ -4,8 +4,9 @@
 }
 <link href="~/Content/Menu.css" type="text/css" rel="stylesheet" />
 <h2 style="color: #696969; text-transform:capitalize; font-variant:small-caps; font-style:italic;">Complementa tu orden</h2>
+<h3 style="color: #696969; text-transform:capitalize; font-variant:small-caps; font-style:italic;">Selecciona la cantidad de tus complementos y cierra tu pedido.</h3>
 <div>
-    @using (Html.BeginForm("Index","Orden", FormMethod.Get))
+    @using (Html.BeginForm("Index","Orden", FormMethod.Post))
     {
         int i=0;
         foreach (var item in (List<ComidaPaLlevar.Domain.Producto>)ViewBag.Productos)
@@ -13,11 +14,10 @@
             <ul class="list-group">
                 <li class="list-group-item itemPlatillo">
                     <div class="contentImage">
-                        <img src="@item.FotoUrl" alt="FotoMenu" style="width:200px; height:auto; " class="imgPlatillo" />
+                        <img src="@item.FotoUrl" alt="FotoMenu" style="height:150px; width:auto; " class="imgPlatillo" />
                     </div>
                     <div class="contentDatos">
                         <p class="nombrePlatillo">
-                            <span>Plato fuerte:</span>
                             <label>@item.Nombre</label>
                         </p>
 
@@ -31,7 +31,7 @@
                             <label>@item.Precio.ToString("c")</label>
                         </p>
                         <p class="precioPlatillo">
-                            <span>Cantidad:</span>
+                            <span><b>Cantidad:</b></span>
                             @Html.DropDownList("CantidadesProducto["+i+"].Cantidad", new SelectList(new List<int> { 0, 1, 2, 3, 4 }))
                             @Html.Hidden("CantidadesProducto["+i+"].ProductoId",item.Id)
                         </p>

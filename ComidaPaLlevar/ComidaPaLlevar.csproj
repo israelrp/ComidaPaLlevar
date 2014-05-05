@@ -618,6 +618,7 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Orden\Estatus.cshtml" />
     <Content Include="Views\Complementos\Index.cshtml" />
+    <Content Include="Views\Menu\_GridViewPartialMenus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

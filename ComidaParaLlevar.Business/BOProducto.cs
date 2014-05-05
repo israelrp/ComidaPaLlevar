@@ -12,7 +12,7 @@ namespace ComidaPaLlevar.Business
     {
         public List<Producto> RecuperarProductos()
         {
-            return new ProductoDaoImpl().SelectAll();
+            return new ProductoDaoImpl().SelectAll().Where(x => x.Disponible == true).OrderByDescending(x=>x.Id).ToList();
         }
 
         public Producto SelectByKey(int ProductoId)

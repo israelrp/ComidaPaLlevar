@@ -18,18 +18,20 @@ namespace ComidaPaLlevar.Controllers
         {
             if (Session["UsuarioLogueado"] == null)
                 return Redirect("~/Home/Index");
+            listaOrden.ImporteTotal = 0;
             listaOrden.Menu = new BOMenu().SelectByKey(listaOrden.MenuId);
+            listaOrden.ImporteTotal += listaOrden.Menu.Precio;
             foreach (var item in listaOrden.CantidadesProducto)
             {
                 if (item.Cantidad > 0)
                 {
                     item.Producto = new BOProducto().SelectByKey(item.ProductoId);
+                    listaOrden.ImporteTotal += (item.Producto.Precio*item.Cantidad);
                 }
             }
             return View(listaOrden);
         }
-
-        [ActionName("Index")]
+        
         [HttpPost]
         public RedirectToRouteResult Confirmar(ComidaPaLlevar.Models.ListaOrden listaOrden)
         {
@@ -42,6 +44,11 @@ namespace ComidaPaLlevar.Controllers
             orden.UsuarioId = usuario.Id;
             orden.MenuId = listaOrden.MenuId;
             orden=boOrden.NuevaOrden(orden);
+            BOSalida boSalida = new BOSalida();
+            foreach (var item in listaOrden.CantidadesProducto)
+            {
+                boSalida.NuevaSalida(item.Cantidad, item.ProductoId, orden.UsuarioId, orden.Id);
+            }
             return RedirectToAction("Confirmado",orden);
         }
 

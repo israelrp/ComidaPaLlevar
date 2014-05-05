@@ -35,54 +35,62 @@
             </li>
     </ul>
     <br/>
-    int i=0;
-    foreach (var item in (List<comidapallevar.domain.producto>
-        )ViewBag.Productos)
-        {
+    @using (Html.BeginForm("Confirmar", "Orden", FormMethod.Post))
+{
+    int i = 0;
+    int y=0;
+    foreach (var item in Model.CantidadesProducto)
+    {
+        if (item.Producto != null) { 
         <ul class="list-group">
             <li class="list-group-item itemPlatillo">
                 <div class="contentImage">
-                    <img src="@item.FotoUrl" alt="FotoMenu" style="width:200px; height:auto; " class="imgPlatillo" />
+                    <img src="@item.Producto.FotoUrl" alt="FotoMenu" style="width:200px; height:auto; " class="imgPlatillo" />
                 </div>
                 <div class="contentDatos">
                     <p class="nombrePlatillo">
                         <span>Plato fuerte:</span>
-                        <label>@item.Nombre</label>
+                        <label>@item.Producto.Nombre</label>
                     </p>
 
                     <p class="descripcionPlatillo">
                         <span>Descripción:</span>
-                        <label>@item.Descripción</label>
+                        <label>@item.Producto.Descripción</label>
                     </p>
 
                     <p class="precioPlatillo">
                         <span>Precio:</span>
-                        <label>@item.Precio.ToString("c")</label>
+                        <label>@item.Producto.Precio.ToString("c")</label>
                     </p>
                     <p class="precioPlatillo">
-                        <span>Cantidad:</span>
-                        @Html.DropDownList("CantidadesProducto[" + i + "].Cantidad", new SelectList(new List<int> { 0, 1, 2, 3, 4 }))
-                        @Html.Hidden("CantidadesProducto[" + i + "].ProductoId", item.Id)
+                        <span>Cantidad:</span>                        
+                        <label>@Model.CantidadesProducto[i].Cantidad</label>
+                        @Html.Hidden("CantidadesProducto[" + y + "].ProductoId", item.Producto.Id)
+                        @Html.Hidden("CantidadesProducto[" + y + "].Cantidad", item.Producto.Id)
                     </p>
                 </div>
             </li>
         </ul>
+            y += 1;
+    }
         i += 1;
-        }
+        
+    }
         <br />
         <div style="text-align:center;">
-            @using (Html.BeginForm("Index", "Orden", FormMethod.Post))
-            {
                 <label>Comentarios:</label><br />
                 @Html.TextAreaFor(m => m.Comentarios, new { @class = "text-area" })<br />
                 <label>Dirección:</label><br />
                 @Html.TextAreaFor(m => m.Direccion, new { @class = "text-area" })<br />
                 @Html.HiddenFor(m => m.MenuId)
                 @Html.HiddenFor(m => m.UsuarioId)<br />
+                <h3 style="color: red; text-transform:capitalize; font-variant:small-caps; font-style:italic; ">Importe total: @Model.ImporteTotal.ToString("c")</h3>
+                <br/><br />
                 <button class="btn btn-default" type="submit">
                     <span class="glyphicon glyphicon-ok-sign"></span><span> Confirmar pedido</span>
-                </button>
-            }
+                </button>            
         </div>
+            
+    }
 </div>
 
