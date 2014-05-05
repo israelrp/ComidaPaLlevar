@@ -45,9 +45,12 @@ namespace ComidaPaLlevar.Controllers
             orden.MenuId = listaOrden.MenuId;
             orden=boOrden.NuevaOrden(orden);
             BOSalida boSalida = new BOSalida();
-            foreach (var item in listaOrden.CantidadesProducto)
+            if (listaOrden.CantidadesProducto != null)
             {
-                boSalida.NuevaSalida(item.Cantidad, item.ProductoId, orden.UsuarioId, orden.Id);
+                foreach (var item in listaOrden.CantidadesProducto)
+                {
+                    boSalida.NuevaSalida(item.Cantidad, item.ProductoId, orden.UsuarioId, orden.Id);
+                }
             }
             return RedirectToAction("Confirmado",orden);
         }

@@ -65,8 +65,8 @@
                     <p class="precioPlatillo">
                         <span>Cantidad:</span>                        
                         <label>@Model.CantidadesProducto[i].Cantidad</label>
-                        @Html.Hidden("CantidadesProducto[" + y + "].ProductoId", item.Producto.Id)
-                        @Html.Hidden("CantidadesProducto[" + y + "].Cantidad", item.Producto.Id)
+                        <input type="hidden" value="@Model.CantidadesProducto[i].ProductoId" name="CantidadesProducto[@y].ProductoId" />
+                        <input type="hidden" value="@Model.CantidadesProducto[i].Cantidad" name="CantidadesProducto[@y].Cantidad" />
                     </p>
                 </div>
             </li>
