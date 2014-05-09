@@ -10,6 +10,12 @@ namespace ComidaPaLlevar.Business
 {
     public class BOSalida
     {
+        public List<Salida> RecuperarSalidas()
+        {
+            SalidaDaoImpl salidaDaoImpl = new SalidaDaoImpl();
+            return salidaDaoImpl.SelectAll();
+        }
+
         public Salida NuevaSalida(int Cantidad, int ProductoId, int UsuarioId, int OrdenId)
         {
             SalidaDaoImpl salidaDaoImpl = new SalidaDaoImpl();

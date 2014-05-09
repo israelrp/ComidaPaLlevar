@@ -27,5 +27,7 @@ namespace ComidaPaLlevar.Domain
 		public DateTime FechaSolicitud { get; set; } //(datetime, not null)
 		[Required]
 		public int Cantidad { get; set; } //(int, not null)
+
+        public Producto Producto { get; set; }
 	}
 }

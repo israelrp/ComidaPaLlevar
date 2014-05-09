@@ -1,0 +1,37 @@
+@{
+	var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "GridViewOrdenComplementos";
+        settings.CallbackRouteValues = new { Controller = "Complementos", Action = "GridViewPartialOrdenComplementos" };
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Complementos", Action = "GridViewPartialOrdenComplementosAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Complementos", Action = "GridViewPartialOrdenComplementosUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Complementos", Action = "GridViewPartialOrdenComplementosDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+		settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowNewButton = false;
+        settings.CommandColumn.ShowDeleteButton = false;
+        settings.CommandColumn.ShowEditButton = false;
+
+		settings.KeyFieldName = "Id";
+
+		settings.SettingsPager.Visible = true;
+		settings.Settings.ShowGroupPanel = true;
+		settings.Settings.ShowFilterRow = true;
+        settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+                settings.Columns.Add("Producto.Nombre");
+				settings.Columns.Add("Precio");
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "FechaSolicitud";
+                    c.ColumnType = MVCxGridViewColumnType.DateEdit;
+                });
+				settings.Columns.Add("Cantidad");
+			});
+		if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

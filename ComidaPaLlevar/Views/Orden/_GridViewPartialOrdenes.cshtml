@@ -29,7 +29,7 @@
             c.ReadOnly = true;
             c.EditFormSettings.Visible = DefaultBoolean.False;
             var comboBoxProperties = c.PropertiesEdit as ComboBoxProperties;
-            comboBoxProperties.DataSource = new ComidaPaLlevar.Business.BOUsuario().RecuperarUsuarios();
+            comboBoxProperties.DataSource = new ComidaPaLlevar.Business.BOUsuario().RecuperarUsuario();
             comboBoxProperties.TextField = "Nombre";
             comboBoxProperties.ValueField = "Id";
 
@@ -59,17 +59,10 @@
 				settings.Columns.Add("Latitud");
 				settings.Columns.Add("Longitud");
 				settings.Columns.Add("Direccion");
-                settings.Columns.Add("Estatus");
                 settings.Columns.Add(c =>
                 {
                     c.FieldName = "Estatus";
                     c.ColumnType = MVCxGridViewColumnType.ComboBox;
-                    c.ReadOnly = true;
-                    c.EditFormSettings.Visible = DefaultBoolean.False;
-                    var comboBoxProperties = c.PropertiesEdit as ComboBoxProperties;
-                    comboBoxProperties.DataSource = new ComidaPaLlevar.Business.BOOrden().RecuperarOrdenes();
-                    comboBoxProperties.TextField = "Nombre";
-                    comboBoxProperties.ValueField = "Codigo";
 
 
                 });

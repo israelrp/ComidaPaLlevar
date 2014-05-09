@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace ComidaPaLlevar.Controllers
 {
     public class AdministracionController : Controller
@@ -24,5 +25,7 @@ namespace ComidaPaLlevar.Controllers
         {
             return View();
         }
+
+       
 	}
 }
