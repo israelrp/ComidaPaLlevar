@@ -29,5 +29,7 @@ namespace ComidaPaLlevar.Domain
 		public int Cantidad { get; set; } //(int, not null)
 
         public Producto Producto { get; set; }
+
+        public Usuario Usuario { get; set; }
 	}
 }

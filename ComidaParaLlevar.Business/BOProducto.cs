@@ -19,5 +19,20 @@ namespace ComidaPaLlevar.Business
         {
             return new ProductoDaoImpl().SelectByKey(new Producto { Id=ProductoId });
         }
+
+        public Producto NuevoProducto(Producto producto)
+        {
+            return new ProductoDaoImpl().Insert(producto);
+        }
+
+        public Producto ActualizarProducto(Producto producto)
+        {
+            return new ProductoDaoImpl().Update(producto);
+        }
+
+        public bool EliminarProducto(int Id)
+        {
+            return new ProductoDaoImpl().Delete(new Producto { Id = Id });
+        }
     }
 }

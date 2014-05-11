@@ -261,7 +261,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\AdministratorUser.cs" />
     <Compile Include="Models\ListaOrden.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegistroUsuarioModel.cs" />
@@ -622,6 +622,10 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Complementos\_GridViewPartialOrdenComplementos.cshtml" />
+    <Content Include="Views\Administracion\Login.cshtml" />
+    <Content Include="Views\Administracion\Index.cshtml" />
+    <Content Include="Views\Administracion\Productos.cshtml" />
+    <Content Include="Views\Complementos\_GridViewPartialProductos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

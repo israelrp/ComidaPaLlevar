@@ -40,6 +40,7 @@ namespace ComidaPaLlevar.Controllers
             foreach (var salida in model)
             {
                 salida.Producto = new BOProducto().SelectByKey(salida.Productoid);
+                salida.Usuario = new BOUsuario().SelectByKey(new BOOrden().SelectById(salida.OrdenId).UsuarioId);
             }
             return PartialView("_GridViewPartialOrdenComplementos", model);
         }
@@ -98,6 +99,78 @@ namespace ComidaPaLlevar.Controllers
                 }
             }
             return PartialView("_GridViewPartialOrdenComplementos", model);
+        }
+
+
+        [ValidateInput(false)]
+        public ActionResult GridViewPartialProductos()
+        {
+            var model = new BOProducto().RecuperarProductos();
+            return PartialView("_GridViewPartialProductos", model);
+        }
+
+        [HttpPost, ValidateInput(false)]
+        public ActionResult GridViewPartialProductosAddNew([ModelBinder(typeof(DevExpressEditorsBinder))] ComidaPaLlevar.Domain.Producto item)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    // Insert here a code to insert the new item in your model
+                    BOProducto boProducto = new BOProducto();
+                    boProducto.NuevoProducto(item);
+                }
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
+            }
+            else
+                ViewData["EditError"] = "Please, correct all errors.";
+            var model = new BOProducto().RecuperarProductos();
+            return PartialView("_GridViewPartialProductos", model);
+        }
+        [HttpPost, ValidateInput(false)]
+        public ActionResult GridViewPartialProductosUpdate([ModelBinder(typeof(DevExpressEditorsBinder))] ComidaPaLlevar.Domain.Producto item)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    // Insert here a code to update the item in your model
+                    BOProducto boProducto = new BOProducto();
+                    boProducto.ActualizarProducto(item);
+                }
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
+            }
+            else
+                ViewData["EditError"] = "Please, correct all errors.";
+            var model = new BOProducto().RecuperarProductos();
+            return PartialView("_GridViewPartialProductos", model);
+        }
+        [HttpPost, ValidateInput(false)]
+        public ActionResult GridViewPartialProductosDelete(System.Int32 Id)
+        {
+            
+            if (Id >= 0)
+            {
+                try
+                {
+                    // Insert here a code to delete the item from your model
+                    BOProducto boProducto = new BOProducto();
+                    boProducto.EliminarProducto(Id);
+                }
+                catch (Exception e)
+                {
+                    ViewData["EditError"] = e.Message;
+                }
+            }
+            var model = new BOProducto().RecuperarProductos();
+            return PartialView("_GridViewPartialProductos", model);
         }
 	}
 }

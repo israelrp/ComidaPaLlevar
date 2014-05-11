@@ -1,0 +1,38 @@
+@{
+	var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "GridViewProductos";
+        settings.CallbackRouteValues = new { Controller = "Complementos", Action = "GridViewPartialProductos" };
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Complementos", Action = "GridViewPartialProductosAddNew" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Complementos", Action = "GridViewPartialProductosUpdate" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Complementos", Action = "GridViewPartialProductosDelete" };
+        settings.SettingsEditing.Mode = GridViewEditingMode.EditFormAndDisplayRow;
+        settings.SettingsBehavior.ConfirmDelete = true;
+
+		settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowNewButton = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+		settings.KeyFieldName = "Id";
+
+		settings.SettingsPager.Visible = true;
+		settings.Settings.ShowGroupPanel = true;
+		settings.Settings.ShowFilterRow = true;
+		settings.SettingsBehavior.AllowSelectByRowClick = true;
+
+				settings.Columns.Add("Nombre");
+				settings.Columns.Add("Descripción");
+				settings.Columns.Add("FotoUrl");
+				settings.Columns.Add("Precio");
+                settings.Columns.Add(c =>
+                {
+                    c.FieldName = "Disponible";
+                    c.ColumnType = MVCxGridViewColumnType.CheckBox;
+                });
+			});
+		if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

@@ -18,6 +18,11 @@ namespace ComidaPaLlevar.Business
             return ordenesUsuario;
         }
 
+        public Orden SelectById(int Id)
+        {
+            return new OrdenDaoImpl().SelectByKey(new Orden { Id=Id });
+        }
+
         public Orden NuevaOrden(Orden orden)
         {
             OrdenDaoImpl ordenesDaoImpl = new OrdenDaoImpl();
