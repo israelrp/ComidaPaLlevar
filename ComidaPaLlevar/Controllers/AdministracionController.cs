@@ -58,6 +58,11 @@ namespace ComidaPaLlevar.Controllers
             return View();
         }
 
+        public ActionResult Publicidad()
+        {
+            return View();
+        }
+
         [AllowAnonymous]
         public ActionResult Login()
         {
