@@ -10,4 +10,187 @@ hr {
     border-top: 5px double #F3F3F3; 
     text-align:center;
 }
+/*----
+    ---
+----*/
+#img-header{
+        background-image: url('../../Images/header.png');
+        width: 1140px;
+        height: 287px;
+    }
 
+    .promo {
+        color: white;
+        margin-left: 20px;
+        top: 50px;
+        width: 460px;
+        text-align: left;
+        background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 100%); /* IE10+ */
+        background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+        font-weight:normal;
+    }
+
+    .form-register {
+        float: right;
+        background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 100%); /* IE10+ */
+        background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+        width: 310px;
+        height: 490px;
+        margin-right: 20px;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        border-radius: 30px;
+    }
+
+    .tabla-caracteristica {
+        float: left;
+        width: 370px;
+        height:400px;
+        text-align:center;
+    }
+
+    /**/
+    .txtPasos > div:hover {
+        color: #008000;
+    }
+
+    .flecha {
+        font-size:60px; float:right; margin-right:20px; top:-34px;
+    }
+    #contentLogin{
+        float:right; margin-top:20px;
+    }
+#nombreMarca a {
+    color:white;
+}
+#lugarDisponible {
+}
+/*----
+    ---
+----*/
+
+@media screen and (max-width: 1200px){
+    #img-header {
+        width:100%;
+        min-height:285px;
+        height:20%;
+    }
+    .flecha {
+        font-size:50px;
+        top:0px;
+    }
+    .tabla-caracteristica {
+        float:none;
+        display:block;
+        height:250px;
+        margin:0 auto;
+    }
+}
+
+
+@media screen and (max-width: 990px) {
+    .page-header {
+        background-repeat:repeat-x;
+    }
+    .txtChangeColor {        
+    }
+    #contentLoginHeader {
+        background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 100%);
+        border-radius:5px;
+        padding:15px;
+    }
+        #contentLoginHeader > * {
+            display:block;
+            margin-top:5%;
+        }
+
+    #img-header {
+        position:relative;
+    }
+    .promo {
+        position:absolute;
+        top:-40%;
+    }
+
+    .tabla-caracteristica {
+        margin:0;
+        margin-bottom:5%;
+        height:auto;
+    }
+        .tabla-caracteristica > h2 {
+            font-size:16px;
+            color:orange;
+        }
+        .tabla-caracteristica > span {
+            font-size:25px;
+        }
+        .tabla-caracteristica > p {
+
+        }
+
+    .form-register {
+        margin-top:40%;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .form-register {
+        float:none;
+        width:100%;
+        margin-top:60%;
+    }
+    #img-header {
+        min-height:150px;
+        background-repeat:no-repeat;
+    }
+
+    .tabla-caracteristica {
+        margin:0 auto;
+    }
+
+    .flecha {
+        display:none;
+    }
+    .promo {
+        display:none;
+    }
+
+    #contentLoginHeader {        
+        float:none;
+    }
+    #contentLoginHeader > * {
+        display:block;
+        width:100%;
+    }
+    #contentLogin {
+        float:none;
+        padding-top:25%;
+    }
+    .container {
+        position:relative;
+    }
+    #nombreMarca, #lugarDisponible {
+        position:absolute;
+        top:2%;
+        left:35%;
+        color:#FFF;
+    }
+    #lugarDisponible {
+        top:20%;
+        left:30%;
+    }
+    #nombreMarca
+    {
+        color:#FFF;
+    }
+}

@@ -15,7 +15,7 @@
 <body style="padding-top:0px;">
     <header class="page-header">
         <div class="container body-content">
-            <div style="float:right; margin-top:20px;">
+            <div id="contentLogin" style="">
                 @if (Session["UsuarioLogueado"] == null)
                 {
                     Html.RenderPartial("../Usuarios/PartialLoginUsuario", new ComidaPaLlevar.Models.LoginModel());
@@ -28,8 +28,8 @@
                     <a style="text-decoration: none; font-weight: bold; font-size: 26px;" href="~/Menu/">Ver menú del día</a>
                 }
             </div>
-            <h1 style="font-family: 'oswaldbold';"><a style="color:white; text-decoration:none;" href="~/Home/">ComoEnCasa</a></h1>
-            <label>Disponible sólo en la capital de Puebla</label>
+            <h1 id="nombreMarca" style="font-family: 'oswaldbold';"><a style="text-decoration:none;" href="~/Home/">ComoEnCasa</a></h1>
+            <label id="lugarDisponible" class="txtChangeColor">Disponible sólo en la capital de Puebla</label>
         </div>               
     </header>
 
