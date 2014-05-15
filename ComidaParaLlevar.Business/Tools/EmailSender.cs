@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Mail;
 
-namespace Nvbola.BusinessLayer.Tools
+namespace ComidaPaLlevar.Business.Tools
 {
     public class EmailSender
     {

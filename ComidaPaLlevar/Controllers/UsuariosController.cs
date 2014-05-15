@@ -138,5 +138,18 @@ namespace ComidaPaLlevar.Controllers
             model = boUsuario.RecuperarUsuario();
             return PartialView("_GridViewPartialClientes", model);
         }
+
+        public JsonResult RecuperarPassword(string Email)
+        {
+            bool resultado = false;
+            Usuario usuario = new BOUsuario().RecuperarUsuarioByEmail(Email);
+            if (usuario != null)
+            {
+                ComidaPaLlevar.Business.Tools.EmailSender sender= new Business.Tools.EmailSender();
+                sender.SendMail("Hola " + usuario.Nombre + ", <br/><br/> Tu contraseña es: " + usuario.Password + ". <br/><br/> www.comoenksa.com", usuario.Email, "noreply@comoenksa.com", "Recuperación contraseña ComoEnKsa");
+                resultado = true;
+            }
+            return Json(resultado, JsonRequestBehavior.AllowGet);
+        }
 	}
 }

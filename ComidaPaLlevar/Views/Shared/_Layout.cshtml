@@ -8,6 +8,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js" ></script>
     <link href="~/fonts/oswald-bold/stylesheet.css" rel="stylesheet" />
     <link href="~/Content/Layout.css" rel="stylesheet" />
 
@@ -19,6 +21,9 @@
                 @if (Session["UsuarioLogueado"] == null)
                 {
                     Html.RenderPartial("../Usuarios/PartialLoginUsuario", new ComidaPaLlevar.Models.LoginModel());
+                    <div style="float:right; font-weight:bold; margin-top:10px;">
+                        <a id="aresetear" href=" #modal-recuperar-password" data-toggle="modal" style="color:#a3dd37; ">Recuperar contraseña</a>
+                    </div>
                 }
                 else
                 {
@@ -45,7 +50,7 @@
     </div>
 
     
-    @Scripts.Render("~/bundles/jqueryval")
+    
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 

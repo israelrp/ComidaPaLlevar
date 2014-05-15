@@ -64,7 +64,9 @@
                     }
                 });
             }
-        }//            
+        }//     
+
+
     });
 
 
@@ -82,11 +84,80 @@
             }
         }
     }
+
+    function RecuperarPasswordCorrecto(result) {        
+        if (result == true) {
+            $("#modal-recuperar-password").modal('hide');
+            $("#modal-exito-password").modal('show');
+        }
+        else {            
+            $("#modal-fallido-password").modal('show');
+        }
+    }
+
+    function RecuperarPasswordIncorrecto() {
+        alert("No fue posible recuperar tu contraseña, intenta mas tarde.");
+    }
 </script>
 
 <!--
     
 -->
+<div id="modal-recuperar-password" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Recuperar contraseña</h4>
+            </div>
+            @using (Ajax.BeginForm("RecuperarPassword", "Usuarios", new AjaxOptions { HttpMethod = "POST", OnSuccess = "RecuperarPasswordCorrecto", OnFailure = "RecuperarPasswordIncorrecto", LoadingElementId = "" }))
+            {
+                <div class="modal-body">
+                    <p>Escribe el Email con el cual te registraste y te enviaremos tu contraseña a tu cuenta de Email</p>                
+                    <input name="Email" class="form-control" type="email" placeholder="ejemplo@comoenksa.com" />                   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Recuperar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div id="modal-exito-password" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Recuperar contraseña</h4>
+            </div>
+            <div class="modal-body">
+                <p>Tu contraseña ha sido enviada a tu Email.</p>                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-fallido-password" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Recuperar contraseña</h4>
+            </div>
+            <div class="modal-body">
+                <p>Tu cuenta de Email no fue encontrada. ¿Esta bien escrito tu Email?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="dialog-usuarioPass" title="¡Datos incorrectos!" style="display: none; ">
     <p>
@@ -111,6 +182,13 @@
     <p>
         :)
     </p>
+</div>
+
+<div id="dialog-resetear" title="Resetear contraseña" style="display:none;">
+    @using (Html.BeginForm())
+    {
+        <label>Email:</label><input placeholder="Email" type="email"/>
+    }
 </div>
 
 <div class="header-content">

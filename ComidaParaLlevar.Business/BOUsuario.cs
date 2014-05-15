@@ -20,6 +20,13 @@ namespace ComidaPaLlevar.Business
                 return null;
         }
 
+        public Usuario RecuperarUsuarioByEmail(string Email)
+        {
+            UsuarioDaoImpl usuarioDaoImpl = new UsuarioDaoImpl();
+            Usuario usuario = usuarioDaoImpl.SelectAll().Where(x => x.Email == Email).FirstOrDefault();
+            return usuario;
+        }
+
         public Usuario ActualizarUsuario(Usuario usuario)
         {
             UsuarioDaoImpl UsuarioDaoImpl = new UsuarioDaoImpl();
